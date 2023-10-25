@@ -4,6 +4,9 @@ import UserContext from "./context/Context";
 import Home from "./pages/Home";
 import { useState } from "react";
 import Login from "./pages/Login";
+import Help from "./pages/Help";
+import Terms from "./pages/Terms";
+import Services from "./pages/Services";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +32,10 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={dataExpanded}>
           <Routes>
+            <Route path="/services" element={<Services />} />
+            <Route path="/Terms" element={<Terms />} />
+            <Route path="/Help" element={<Help />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Home />} />
           </Routes>
