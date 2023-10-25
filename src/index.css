@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Tilt+Neon&display=swap');
+*{
+  font-family: Roboto Slab ;
+}

@@ -34,7 +34,7 @@ const Navbar = () => {
     <div>
       <div className="bg-black flex justify-between text-gray-100 p-4">
         <div className="flex text-2xl font-bold text-left">
-          <Link to="/">Art G4llery</Link>
+          <Link to="/">Vogue Vault</Link>
           <div className="flex ml-12 items-center">
             <input
               // value={searchInp}

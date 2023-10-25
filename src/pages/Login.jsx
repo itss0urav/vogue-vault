@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import Context from "../context/Context";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 const Login = () => {
+  const [alertMessage, setAlertMessage] = useState("");
   const nav = useNavigate();
   const {
     email,
@@ -20,7 +21,8 @@ const Login = () => {
   const handleSubmit = () => {
     // Check if all required fields are filled
     if (!email || !username || !password || !confirmPassword) {
-      alert("Please fill out all fields");
+      //   alert("Please fill out all fields");
+      setAlertMessage("Please fill out all fields");
       return;
     }
 
@@ -29,7 +31,8 @@ const Login = () => {
       setIsLoggedIn(true);
       nav("/");
     } else {
-      alert("Passwords don't match");
+      //   alert("Passwords don't match");
+      setAlertMessage("Passwords don't match");
     }
   };
 
@@ -45,6 +48,9 @@ const Login = () => {
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
               Sign in to your account
             </h2>
+            <div className="mt-6 text-center text-md font-extrabold text-red-500">
+              {alertMessage}
+            </div>
           </div>
           <div className="mt-8 space-y-6">
             <div className="rounded-md shadow-sm -space-y-px">
