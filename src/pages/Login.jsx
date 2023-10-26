@@ -4,6 +4,8 @@ import React, { useContext, useState } from "react";
 
 const Login = () => {
   const [alertMessage, setAlertMessage] = useState("");
+  const [allUsers, setAllUsers] = useState([userInfo]);
+
   const nav = useNavigate();
   const {
     email,
@@ -26,14 +28,24 @@ const Login = () => {
       return;
     }
 
-    // Check if passwords match
-    if (password === confirmPassword) {
-      setIsLoggedIn(true);
-      nav("/");
+    if (password.length < 8) {
+      setAlertMessage("Choose a stronger password");
     } else {
-      //   alert("Passwords don't match");
-      setAlertMessage("Passwords don't match");
+      // Check if passwords match
+      if (password === confirmPassword) {
+        const userInfo = {
+          userName: username,
+          userEmail: email,
+          userPassword: password,
+        };
+        setIsLoggedIn(true);
+        nav("/");
+      } else {
+        //   alert("Passwords don't match");
+        setAlertMessage("Passwords don't match");
+      }
     }
+    console.log("This is lenght", password.length);
   };
 
   console.log(
@@ -103,14 +115,14 @@ const Login = () => {
                 />
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">
+                <label htmlFor="confirmPassword" className="sr-only">
                   Password
                 </label>
                 <input
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  id="password"
-                  name="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
                   type="password"
                   autoComplete="current-password"
                   required
