@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { mensProducts } from "./data/MyData";
 import UserContext from "./context/Context";
+import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
 import Login from "./pages/Login";
-import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
 import Terms from "./pages/Terms";
 import { useState } from "react";
@@ -16,6 +17,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [allUsers, setAllUsers] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [database, setDatabase] = useState(mensProducts);
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const dataExpanded = {
@@ -31,6 +33,8 @@ function App() {
     setConfirmPassword,
     allUsers,
     setAllUsers,
+    database,
+    setDatabase,
   };
 
   return (
