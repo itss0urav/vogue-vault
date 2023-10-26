@@ -1,20 +1,20 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from "./context/Context";
-import Home from "./pages/Home";
-import { useState } from "react";
-import Login from "./pages/Login";
-import Help from "./pages/Help";
-import Terms from "./pages/Terms";
 import Services from "./pages/Services";
+import Login from "./pages/Login";
+import Terms from "./pages/Terms";
+import { useState } from "react";
+import Home from "./pages/Home";
+import Help from "./pages/Help";
+import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
-
+  const [allUsers, setAllUsers] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const dataExpanded = {
     username,
@@ -27,6 +27,8 @@ function App() {
     setPassword,
     confirmPassword,
     setConfirmPassword,
+    allUsers,
+    setAllUsers,
   };
   return (
     <div className="App">
@@ -34,10 +36,10 @@ function App() {
         <UserContext.Provider value={dataExpanded}>
           <Routes>
             <Route path="/services" element={<Services />} />
-            <Route path="/Terms" element={<Terms />} />
-            <Route path="/Help" element={<Help />} />
             <Route path="/services" element={<Services />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/Terms" element={<Terms />} />
+            <Route path="/Help" element={<Help />} />
             <Route path="/" element={<Home />} />
           </Routes>
         </UserContext.Provider>
