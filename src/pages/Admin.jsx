@@ -20,20 +20,23 @@ const Admin = () => {
           All Users
         </h2>
         <div className="flex flex-col items-center">
-          <table className=" min-w-full border-collapse border border-gray-300">
+          <table className="min-w-full bg-white border-collapse border border-gray-300">
             <thead>
-              <tr>
+              <tr className="bg-gray-200">
                 <th className="border border-gray-300 px-4 py-2">Username</th>
                 <th className="border border-gray-300 px-4 py-2">Email</th>
               </tr>
             </thead>
             <tbody>
               {allUsers.map((user, index) => (
-                <tr key={index}>
-                  <td className="border border-gray-300 px-4 py-2">
+                <tr
+                  key={index}
+                  className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
+                >
+                  <td className="border text-center border-gray-300 px-4 py-2">
                     {user.userName}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td className="border text-center border-gray-300 px-4 py-2">
                     {user.userEmail}
                   </td>
                 </tr>
