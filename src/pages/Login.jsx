@@ -28,12 +28,25 @@ const Login = () => {
       return;
     }
 
+    // Check if it's the admin user
+    if (
+      username === "admin" &&
+      email === "admin@gmail.com" &&
+      password === "admin000"
+    ) {
+      // Navigate to /admin if admin credentials are provided
+      setIsLoggedIn(true);
+      nav("/admin");
+      return;
+    }
+
     // Check if passwords match and have a minimum length of 8 characters
     if (password.length >= 8 && password === confirmPassword) {
       const userInfo = {
         userName: username,
         userEmail: email,
         userPassword: password,
+        role: "user",
       };
 
       // Update allUsers state

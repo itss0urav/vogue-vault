@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from "./context/Context";
 import Services from "./pages/Services";
 import Login from "./pages/Login";
+import Admin from "./pages/Admin";
 import Terms from "./pages/Terms";
 import { useState } from "react";
 import Home from "./pages/Home";
@@ -30,6 +31,7 @@ function App() {
     allUsers,
     setAllUsers,
   };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -41,6 +43,7 @@ function App() {
             <Route path="/Terms" element={<Terms />} />
             <Route path="/Help" element={<Help />} />
             <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
