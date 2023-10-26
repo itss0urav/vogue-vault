@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import Context from "../context/Context";
+import Body from "../components/Body";
 
 const Home = () => {
   const { isLoggedIn } = useContext(Context);
@@ -14,6 +15,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      <Body/>
     </div>
   );
 };
