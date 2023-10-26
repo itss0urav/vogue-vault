@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserContext from "./context/Context";
 import Services from "./pages/Services";
 import Login from "./pages/Login";
+import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
 import Terms from "./pages/Terms";
 import { useState } from "react";
@@ -39,11 +40,12 @@ function App() {
           <Routes>
             <Route path="/services" element={<Services />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/adminhome" element={<Admin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Terms" element={<Terms />} />
             <Route path="/Help" element={<Help />} />
             <Route path="/" element={<Home />} />
-            <Route path="/admin" element={<Admin />} />
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>

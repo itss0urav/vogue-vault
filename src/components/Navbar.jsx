@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
-
+import { GrUserAdmin } from "react-icons/gr";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { BsCartCheck } from "react-icons/bs";
 import Context from "../context/Context";
@@ -66,11 +66,16 @@ const Navbar = () => {
               Terms
             </Link>
           </li>
+          <li className="text-2xl hover:text-gray-400 mt-1">
+            <Link to="/admin">
+              <GrUserAdmin className="bg-white rounded-md p-1 " />
+            </Link>
+          </li>
           <li className="text-cyan-300 text-lg font-medium">{username}</li>
           <li className="text-3xl">
             <p onClick={handleLoginToggle}>
               {isLoggedIn ? (
-                <Link  >
+                <Link>
                   <BiLogOutCircle />
                 </Link>
               ) : (
