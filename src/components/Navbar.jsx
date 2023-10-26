@@ -8,7 +8,7 @@ import { BsCartCheck } from "react-icons/bs";
 import Context from "../context/Context";
 
 const Navbar = () => {
-  const { username, isLoggedIn, setIsLoggedIn } = useContext(Context);
+  const { database, username, isLoggedIn, setIsLoggedIn } = useContext(Context);
   // Use useEffect to react to changes in the login state
   useEffect(() => {
     // console.log("Login state changed: ", isLoggedIn);
@@ -87,20 +87,25 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="flex justify-center mt-8">
+      {/* <div className="flex justify-center mt-8">
         <div className="flex justify-center  w-96 gap-4">
-          {filteredData.map((data, index) => (
-            <div key={index}>
-              {data.names}
-              <img className="rounded-md" src={data.imageUrl} alt="" />
-              <div className="flex gap-1 place-items-center">
-                {data.likes} <BiLike />
-                {data.dislikes} <BiDislike />
+          {database.map((data, index) => (
+            <div key={data.id} className="bg-white p-4 rounded shadow-lg">
+              <h3 className="text-lg font-semibold mb-2">{data.name}</h3>
+              <img
+                className="w-full h-1/2 object-cover mb-2"
+                src={data.imageUrl}
+                alt={data.name}
+              />
+              <div className="text-gray-700">
+                <p className="mb-1">${data.price}</p>
+                <p className="mb-1">Quantity: {data.quantity}</p>
+                <p className="mb-1">{data.description}</p>
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
