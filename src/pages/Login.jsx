@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 
 const Login = () => {
   const [alertMessage, setAlertMessage] = useState("");
-  const [allUsers, setAllUsers] = useState([userInfo]);
+  const [allUsers, setAllUsers] = useState([]);
 
   const nav = useNavigate();
   const {
@@ -23,34 +23,36 @@ const Login = () => {
   const handleSubmit = () => {
     // Check if all required fields are filled
     if (!email || !username || !password || !confirmPassword) {
-      //   alert("Please fill out all fields");
       setAlertMessage("Please fill out all fields");
       return;
     }
 
-    if (password.length < 8) {
-      setAlertMessage("Choose a stronger password");
+    // Check if passwords match and have a minimum length of 8 characters
+    if (password.length >= 8 && password === confirmPassword) {
+      const userInfo = {
+        userName: username,
+        userEmail: email,
+        userPassword: password,
+      };
+
+      // Update allUsers state
+      setAllUsers((prevUsers) => [...prevUsers, userInfo]);
+
+      // Set isLoggedIn to true and navigate to the desired page
+      setIsLoggedIn(true);
+      nav("/");
     } else {
-      // Check if passwords match
-      if (password === confirmPassword) {
-        const userInfo = {
-          userName: username,
-          userEmail: email,
-          userPassword: password,
-        };
-        setIsLoggedIn(true);
-        nav("/");
+      if (password.length < 8) {
+        setAlertMessage("Choose a stronger password (at least 8 characters).");
       } else {
-        //   alert("Passwords don't match");
         setAlertMessage("Passwords don't match");
       }
     }
-    console.log("This is lenght", password.length);
   };
 
-  console.log(
-    `Email: ${email}, Password: ${password} , Confirm Password ${confirmPassword}.`
-  );
+  // console.log(
+  //   `Email: ${email}, Password: ${password} , Confirm Password ${confirmPassword}.`
+  // );
 
   return (
     <>
@@ -151,6 +153,18 @@ const Login = () => {
           The Email is: {email} <br />
           The Password is: {password} <br />
           The Confirm Password is: {confirmPassword} <br />
+        </div>
+      </div>
+      <div className="mt-8">
+        <h2 className="text-center text-2xl font-bold text-gray-900 mb-4">All Users</h2>
+        <div className="flex flex-col items-center">
+          {/* Map through allUsers state and display each user */}
+          {allUsers.map((user, index) => (
+            <div key={index} className="mb-2">
+              <span className="font-bold">Username:</span> {user.userName}, 
+              <span className="font-bold"> Email:</span> {user.userEmail}
+            </div>
+          ))}
         </div>
       </div>
     </>
