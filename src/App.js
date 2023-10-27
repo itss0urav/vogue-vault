@@ -22,6 +22,9 @@ function App() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [cart, setCart] = useState(null);
   const [wishlist, setWishlist] = useState(null);
+
+  console.log("the cart products",cart)
+  console.log("the wishlist products",wishlist)
   const dataExpanded = {
     username,
     setUsername,
