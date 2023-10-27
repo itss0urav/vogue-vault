@@ -57,13 +57,13 @@ const Body = () => {
                 <p className="mb-1">{product.description}</p>
                 <div className="flex gap-2 mt-2">
                   <button
-                    onClick={() => addToCart(product)}
+                    onClick={() => addToCart(product.id)}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   >
                     Add to Cart
                   </button>
                   <button
-                    onClick={() => addToWishlist(product)}
+                    onClick={() => addToWishlist(product.id)}
                     className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                   >
                     Add to Wishlist

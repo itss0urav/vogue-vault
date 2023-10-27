@@ -20,8 +20,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [database, setDatabase] = useState(mensProducts);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [cart, setCart] = useState(null);
-  const [wishlist, setWishlist] = useState(null);
+  const [cart, setCart] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
   console.log("the cart products",cart)
   console.log("the wishlist products",wishlist)
