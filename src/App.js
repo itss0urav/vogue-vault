@@ -5,6 +5,7 @@ import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
 import Cart from "./components/Cart";
+import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import Terms from "./pages/Terms";
@@ -57,6 +58,7 @@ function App() {
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/adminhome" element={<Admin />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/SignUp" element={<SignUp />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/help" element={<Help />} />
             <Route path="/Cart" element={<Cart />} />
