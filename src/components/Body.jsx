@@ -54,7 +54,7 @@ const Body = () => {
             >
               <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
               <img
-                className="w-full h-1/3 object-cover mb-2"
+                className="w-full h-1/2 object-cover mb-2"
                 src={product.imageUrl}
                 alt={product.name}
               />
