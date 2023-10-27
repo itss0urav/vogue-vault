@@ -4,6 +4,7 @@ import Category from "./components/Category";
 import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
+import Cart from "./components/Cart";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import Terms from "./pages/Terms";
@@ -23,8 +24,8 @@ function App() {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
 
-  console.log("the cart products",cart)
-  console.log("the wishlist products",wishlist)
+  console.log("the cart products", cart);
+  console.log("the wishlist products", wishlist);
   const dataExpanded = {
     username,
     setUsername,
@@ -58,6 +59,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/Cart" element={<Cart />} />
 
             {/* products */}
             {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (

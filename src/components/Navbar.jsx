@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
         <ul className="flex gap-5">
           <li className=" hover:text-gray-400">
-            <Link to="/Buy" className="flex items-center text-lg font-medium">
+            <Link to="/Cart" className="flex items-center text-lg font-medium">
               Cart <BsCartCheck className="m-1" />
             </Link>
           </li>
