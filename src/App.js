@@ -12,7 +12,6 @@ import Home from "./pages/Home";
 import Help from "./pages/Help";
 import "./App.css";
 
-
 function App() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -44,15 +43,22 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={dataExpanded}>
           <Routes>
-            <Route path="/services" element={<Services />} />
+            <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/adminhome" element={<Admin />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/Terms" element={<Terms />} />
-            <Route path="/Help" element={<Help />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/pants" element={<Category />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/help" element={<Help />} />
+
+            {/* products */}
+            {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (
+              <Route
+                key={product}
+                path={`/${product}`}
+                element={<Category />}
+              />
+            ))}
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
