@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { mensProducts } from "./data/MyData";
+import Category from "./components/Category";
 import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
@@ -10,7 +11,6 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
 import "./App.css";
-import Category from "./components/Category";
 
 
 function App() {

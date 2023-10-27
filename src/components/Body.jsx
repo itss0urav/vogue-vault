@@ -16,15 +16,19 @@ const Body = () => {
 
   return (
     <div>
-      <div className="pt-1 pb-1 flex justify-center gap-3 text-xl text-white bg-gray-700">
+      <div className="rounded-md pt-1 pb-1 flex justify-center gap-3 text-xl text-white bg-gray-700">
         {filteredArray.map((data, index) => (
-          <div className="hover:bg-gray-600 hover:rounded-md pl-2 pr-2 ">
-            <Link to={`/${data}`}>
+          <div className="hover:bg-gray-600 rounded-md pl-2 pr-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+            <Link
+              to={`/${data}`}
+              className="no-underline text-white hover:text-cyan-200"
+            >
               {data}
             </Link>
           </div>
         ))}
       </div>
+
       <div className="container mx-auto p-4">
         {selectedProduct ? (
           <BuyPage product={selectedProduct} />
