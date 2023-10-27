@@ -7,6 +7,9 @@ const Body = () => {
   const { database, setCart, setWishlist } = useContext(Context);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const [cartText, setCartText] = useState({});
+  const [wishlistText, setWishlistText] = useState({});
+
   const filtered = new Set(database.map((data) => data.category));
   const filteredArray = [...filtered];
 
@@ -17,11 +20,13 @@ const Body = () => {
   const addToCart = (event, product) => {
     event.stopPropagation();
     setCart((currentCart) => [...currentCart, product]);
+    setCartText({ ...cartText, [product.id]: "Added to Cart" });
   };
 
   const addToWishlist = (event, product) => {
     event.stopPropagation();
     setWishlist((currentWishlist) => [...currentWishlist, product]);
+    setWishlistText({ ...wishlistText, [product.id]: "Added to Wishlist" });
   };
 
   return (
@@ -62,13 +67,13 @@ const Body = () => {
                     onClick={(event) => addToCart(event, product)}
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                   >
-                    Add to Cart
+                    {cartText[product.id] || "Add to Cart"}
                   </button>
                   <button
                     onClick={(event) => addToWishlist(event, product)}
                     className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                   >
-                    Add to Wishlist
+                    {wishlistText[product.id] || "Add to Wishlist"}
                   </button>
                 </div>
               </div>
