@@ -20,7 +20,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [database, setDatabase] = useState(mensProducts);
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [cart, setCart] = useState(null);
+  const [wishlist, setWishlist] = useState(null);
   const dataExpanded = {
     username,
     setUsername,
@@ -36,6 +37,10 @@ function App() {
     setAllUsers,
     database,
     setDatabase,
+    cart,
+    setCart,
+    wishlist,
+    setWishlist,
   };
 
   return (
