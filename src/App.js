@@ -10,6 +10,8 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
 import "./App.css";
+import Category from "./components/Category";
+
 
 function App() {
   const [email, setEmail] = useState("");
@@ -50,6 +52,7 @@ function App() {
             <Route path="/Terms" element={<Terms />} />
             <Route path="/Help" element={<Help />} />
             <Route path="/" element={<Home />} />
+            <Route path="/pants" element={<Category />} />
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
