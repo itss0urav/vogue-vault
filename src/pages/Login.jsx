@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Context from "../context/Context";
 import React, { useContext, useState } from "react";
-
+import logo from "../assets/VV-Transparent.png";
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
@@ -28,6 +28,9 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
+          <div className="flex justify-center">
+            <img className=" w-1/4" src={logo} alt="logo" />
+          </div>
           <h2 className="text-center text-3xl font-extrabold text-gray-900">
             Login
           </h2>
