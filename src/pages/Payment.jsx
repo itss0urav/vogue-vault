@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
 
   const nav = useNavigate();
+
+  const location = useLocation();
+  const totalPrice = location.state.totalPrice;
+  console.log("total price",totalPrice)
   // for card data
 
   const [cardNumber, setCardNumber] = useState("");
@@ -111,6 +115,7 @@ const Payment = () => {
                   UPI ID
                 </label>
                 <input
+                  required
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="upiId"
                   type="text"
@@ -121,14 +126,10 @@ const Payment = () => {
             </>
           )}
 
-          {paymentMethod === "cod" && (
-            <>
-              {/* COD details form */}
-              {/* No additional details needed for COD */}
-            </>
-          )}
+          {paymentMethod === "cod" && <>{/* COD details form */}</>}
 
           <div className="flex items-center justify-between">
+            {totalPrice}
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"

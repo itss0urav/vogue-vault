@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import Context from "../context/Context";
-
+import { useNavigate } from "react-router-dom";
 const BuyPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
-  const { setCart,cartText, setCartText } = useContext(Context);
+  const nav = useNavigate();
+  const { setCart, cartText, setCartText } = useContext(Context);
 
   const handleQuantityChange = (event) => {
     setQuantity(parseInt(event.target.value, 10));
@@ -15,8 +16,9 @@ const BuyPage = ({ product }) => {
   //By specifying 10, we ensure that the value is always interpreted as a decimal number.
 
   const totalPrice = product.price * quantity;
-
-  const handleBuyNow = () => {};
+  const handleBuyNow = () => {
+    nav("/Payment", { state: { totalPrice } });
+  };
 
   const addToCart = (event, product) => {
     event.stopPropagation();
@@ -61,7 +63,7 @@ const BuyPage = ({ product }) => {
           onClick={(event) => addToCart(event, product)}
           className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 focus:outline-none"
         >
-            {cartText[product.id] || "Add to Cart"}
+          {cartText[product.id] || "Add to Cart"}
         </button>
       </div>
     </div>

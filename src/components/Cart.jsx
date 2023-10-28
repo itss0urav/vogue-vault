@@ -8,7 +8,7 @@ const Cart = () => {
   const { cart } = useContext(Context);
 
   const handleBuyNow = () => {
-    nav("/Payment");
+    nav("/Payment", { state: { totalPrice } });
   };
 
   // Calculate total price
