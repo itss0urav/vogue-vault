@@ -5,6 +5,7 @@ import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
 import Payment from "./pages/Payment";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import Cart from "./components/Cart";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -71,6 +72,7 @@ function App() {
             <Route path="/help" element={<Help />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Payment" element={<Payment />} />
+            <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
 
             {/* products */}
             {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (

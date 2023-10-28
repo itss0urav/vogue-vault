@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
 
+  const nav = useNavigate();
   // for card data
 
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
-  
+
   // for upi
 
   const [upiId, setUpiId] = useState("");
 
   const handlePayment = () => {
     // Handle payment logic here
-
-    
-
+    nav("/PaymentSuccess");
   };
 
   return (
@@ -28,7 +28,10 @@ const Payment = () => {
         <h2 className="text-2xl font-bold mb-4">Payment Details</h2>
         <form onSubmit={handlePayment}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="paymentMethod">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="paymentMethod"
+            >
               Payment Method
             </label>
             <select
@@ -47,10 +50,14 @@ const Payment = () => {
             <>
               {/* Card details form */}
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cardNumber">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="cardNumber"
+                >
                   Card Number
                 </label>
                 <input
+                  required
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="cardNumber"
                   type="text"
@@ -59,22 +66,30 @@ const Payment = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="expiryDate">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="expiryDate"
+                >
                   Expiry Date
                 </label>
                 <input
+                  required
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="expiryDate"
-                  type="text"
+                  type="date"
                   value={expiryDate}
                   onChange={(e) => setExpiryDate(e.target.value)}
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cvv">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="cvv"
+                >
                   CVV
                 </label>
                 <input
+                  required
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="cvv"
                   type="text"
@@ -89,7 +104,10 @@ const Payment = () => {
             <>
               {/* UPI details form */}
               <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="upiId">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="upiId"
+                >
                   UPI ID
                 </label>
                 <input
