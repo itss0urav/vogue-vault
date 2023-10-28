@@ -129,7 +129,7 @@ const Payment = () => {
           {paymentMethod === "cod" && <>{/* COD details form */}</>}
 
           <div className="flex items-center justify-between">
-            {totalPrice}
+            Total Amount: {totalPrice} ₹
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"

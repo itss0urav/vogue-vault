@@ -4,7 +4,7 @@ import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const nav=useNavigate();
+  const nav = useNavigate();
   const { cart } = useContext(Context);
 
   const handleBuyNow = () => {
@@ -19,7 +19,9 @@ const Cart = () => {
       <Navbar />
       <div className="container mx-auto p-4">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Total Price: ${totalPrice.toFixed(2)}</h2>
+          <h2 className="text-2xl font-bold">
+            Total Price: ${totalPrice.toFixed(2)}
+          </h2>
           <button
             onClick={handleBuyNow}
             className="bg-yellow-400 text-black px-6 py-2 rounded hover:bg-yellow-600 focus:outline-none"
@@ -31,7 +33,7 @@ const Cart = () => {
           {cart.map((data, index) => (
             <div key={data.id} className="bg-white p-4 rounded shadow-lg">
               <img
-                className="w-full h-1/2 object-cover mb-2"
+                className="object-cover mb-2"
                 src={data.imageUrl}
                 alt={data.name}
               />
