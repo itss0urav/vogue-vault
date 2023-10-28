@@ -4,11 +4,10 @@ import Context from "../context/Context";
 import BuyPage from "../pages/BuyPage";
 
 const Body = () => {
-  const { database, setCart, setWishlist } = useContext(Context);
+  const { database, setCart, setWishlist,cartText, setCartText,wishlistText, setWishlistText } = useContext(Context);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const [cartText, setCartText] = useState({});
-  const [wishlistText, setWishlistText] = useState({});
+  
 
   const filtered = new Set(database.map((data) => data.category));
   const filteredArray = [...filtered];

@@ -4,6 +4,7 @@ import Category from "./components/Category";
 import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
+import Payment from "./pages/Payment";
 import Cart from "./components/Cart";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -12,6 +13,7 @@ import Terms from "./pages/Terms";
 import { useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
+
 import "./App.css";
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+  const [cartText, setCartText] = useState({});
+  const [wishlistText, setWishlistText] = useState({});
 
   console.log("the cart products", cart);
   console.log("the wishlist products", wishlist);
@@ -46,6 +50,10 @@ function App() {
     setCart,
     wishlist,
     setWishlist,
+    cartText,
+    setCartText,
+    wishlistText,
+    setWishlistText,
   };
 
   return (
@@ -62,6 +70,7 @@ function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="/help" element={<Help />} />
             <Route path="/Cart" element={<Cart />} />
+            <Route path="/Payment" element={<Payment />} />
 
             {/* products */}
             {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "../context/Context";
 
 const BuyPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const { setCart,cartText, setCartText } = useContext(Context);
 
   const handleQuantityChange = (event) => {
     setQuantity(parseInt(event.target.value, 10));
@@ -16,7 +18,11 @@ const BuyPage = ({ product }) => {
 
   const handleBuyNow = () => {};
 
-  const handleAddToCart = () => {};
+  const addToCart = (event, product) => {
+    event.stopPropagation();
+    setCart((currentCart) => [...currentCart, product]);
+    setCartText({ ...cartText, [product.id]: "Added to Cart" });
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -52,10 +58,10 @@ const BuyPage = ({ product }) => {
           Buy Now
         </button>
         <button
-          onClick={handleAddToCart}
+          onClick={(event) => addToCart(event, product)}
           className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 focus:outline-none"
         >
-          Add to Cart
+            {cartText[product.id] || "Add to Cart"}
         </button>
       </div>
     </div>
