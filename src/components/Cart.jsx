@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 import Navbar from "./Navbar";
 import Context from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const nav=useNavigate();
   const { cart } = useContext(Context);
 
-  const handleBuyNow = () => {};
+  const handleBuyNow = () => {
+    nav("/Payment");
+  };
 
   // Calculate total price
   const totalPrice = cart.reduce((total, data) => total + data.price, 0);
