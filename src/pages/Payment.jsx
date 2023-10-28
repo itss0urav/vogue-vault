@@ -16,7 +16,9 @@ const Payment = () => {
 
   const handlePayment = () => {
     // Handle payment logic here
+
     
+
   };
 
   return (
