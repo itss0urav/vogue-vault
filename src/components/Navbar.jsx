@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { GrUserAdmin } from "react-icons/gr";
-import { BiLike, BiDislike } from "react-icons/bi";
+import { BiLike, BiDislike, BiUserCircle } from "react-icons/bi";
 import { BsCartCheck } from "react-icons/bs";
 import Context from "../context/Context";
 
@@ -52,6 +52,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="hover:text-gray-400">
+            <Link to="/Wishlist" className="text-lg font-medium">
+              Wishlist
+            </Link>
+          </li>
+          <li className="hover:text-gray-400">
             <Link to="/Services" className="text-lg font-medium">
               Services
             </Link>
@@ -71,7 +76,12 @@ const Navbar = () => {
               <GrUserAdmin className="bg-white rounded-md p-1 " />
             </Link>
           </li>
-          <li className="text-cyan-300 text-lg font-medium">{username}</li>
+          <Link to="/UserProfile">
+            <div className="flex gap-1">
+              <BiUserCircle className=" text-2xl mt-0.5" />
+              <li className="text-cyan-300 text-lg font-medium">{username}</li>
+            </div>
+          </Link>
           <li className="text-3xl">
             <p onClick={handleLoginToggle}>
               {isLoggedIn ? (

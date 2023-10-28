@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import UserProfile from "./components/UserProfile";
 import { mensProducts } from "./data/MyData";
 import Category from "./components/Category";
+import Wishlist from "./components/Wishlist";
 import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
 import Payment from "./pages/Payment";
-import PaymentSuccess from "./pages/PaymentSuccess";
 import Cart from "./components/Cart";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -14,7 +16,6 @@ import Terms from "./pages/Terms";
 import { useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
-
 import "./App.css";
 
 function App() {
@@ -62,17 +63,19 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={dataExpanded}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
+            <Route path="/UserProfile" element={<UserProfile />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/Wishlist" element={<Wishlist />} />
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/adminhome" element={<Admin />} />
+            <Route path="/Payment" element={<Payment />} />
             <Route path="/login" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/help" element={<Help />} />
             <Route path="/Cart" element={<Cart />} />
-            <Route path="/Payment" element={<Payment />} />
-            <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
+            <Route path="/" element={<Home />} />
 
             {/* products */}
             {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (
