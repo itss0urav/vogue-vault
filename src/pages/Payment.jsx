@@ -3,13 +3,20 @@ import Navbar from "../components/Navbar";
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
+
+  // for card data
+
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
+  
+  // for upi
+
   const [upiId, setUpiId] = useState("");
 
   const handlePayment = () => {
     // Handle payment logic here
+    
   };
 
   return (
