@@ -13,9 +13,9 @@ const Navbar = () => {
 
   useEffect(() => {
  
-  }, [isLoggedIn]);
-  // console.log("updated",allUsers[0].userName)
-
+  }, [isLoggedIn,username]);
+  const updatedName=allUsers[0].userName;
+  console.log("updated",updatedName)
   const handleLoginToggle = () => {
     
     setIsLoggedIn(!isLoggedIn);
@@ -84,7 +84,7 @@ const Navbar = () => {
           <Link to="/UserProfile">
             <div className="flex gap-1">
               <BiUserCircle className=" text-2xl mt-0.5" />
-              <li className="text-cyan-300 text-lg font-medium">{username}</li>
+              <li className="text-cyan-300 text-lg font-medium">{updatedName}</li>
             </div>
           </Link>
           <li className="text-3xl">

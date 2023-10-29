@@ -3,26 +3,29 @@ import Context from "../context/Context";
 import Navbar from "./Navbar";
 
 const UserProfile = () => {
-  const { allUsers } = useContext(Context);
+  const { allUsers, setAllUsers } = useContext(Context);
   const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState(allUsers[0].userName);
   const [email, setEmail] = useState(allUsers[0].userEmail);
   const [password, setPassword] = useState(allUsers[0].userPassword);
+  const [error, setError] = useState(null);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
   const handleInputChange = (e) => {
-    switch (e.target.name) {
+    setError(null); // Clear any previous errors
+    const { name, value } = e.target;
+    switch (name) {
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
       case "email":
-        setEmail(e.target.value);
+        setEmail(value);
         break;
       case "password":
-        setPassword(e.target.value);
+        setPassword(value);
         break;
       default:
         break;
@@ -30,11 +33,22 @@ const UserProfile = () => {
   };
 
   const handleUpdateProfile = () => {
-    allUsers[0].userName = name;
-    allUsers[0].userEmail = email;
-    allUsers[0].userPassword = password;
-    
+    // Validate input (you can add more validation logic as needed)
+    if (!name || !email || !password) {
+      setError("All fields are required.");
+      return;
+    }
+
+    // Update user profile
+    setAllUsers((prevUsers) => {
+      const updatedUsers = [...prevUsers];
+      updatedUsers[0] = { ...updatedUsers[0], userName: name, userEmail: email, userPassword: password };
+      return updatedUsers;
+    });
+
+    setError(null); // Clear any previous errors
   };
+
   console.log("updated allUsers",allUsers)
 
   return (
@@ -43,6 +57,7 @@ const UserProfile = () => {
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
         <div className="p-6 bg-white rounded-xl shadow-md w-full sm:w-3/4 lg:w-1/2 space-y-4">
           <h2 className="text-2xl font-bold text-center">User Profile</h2>
+          {error && <div className="text-red-500 text-center">{error}</div>}
           <div className="flex justify-between">
             <label className="font-bold">Name:</label>
             <input
