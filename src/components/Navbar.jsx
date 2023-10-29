@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
-import { GrUserAdmin } from "react-icons/gr";
+import { GrUserAdmin, GrServices } from "react-icons/gr";
 import { GiSelfLove } from "react-icons/gi";
 import { BiLike, BiDislike, BiUserCircle } from "react-icons/bi";
 import { BsCartCheck } from "react-icons/bs";
@@ -53,8 +53,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="hover:text-gray-400">
-            <Link to="/Wishlist" className="flex items-center text-lg font-medium">
-              Wishlist <GiSelfLove  className="m-1"/>
+            <Link
+              to="/Wishlist"
+              className="flex items-center text-lg font-medium"
+            >
+              Wishlist <GiSelfLove className="m-1" />
             </Link>
           </li>
           <li className="hover:text-gray-400">
