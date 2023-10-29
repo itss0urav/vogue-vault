@@ -9,13 +9,13 @@ const Home = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate("/login") || navigate("/signup") ;
+      navigate("/login") || navigate("/signup");
     }
   }, [isLoggedIn, navigate]);
   return (
     <div>
       <Navbar />
-      <Body/>
+      <Body />
     </div>
   );
 };

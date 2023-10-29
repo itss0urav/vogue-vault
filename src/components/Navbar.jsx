@@ -9,14 +9,15 @@ import { BsCartCheck } from "react-icons/bs";
 import Context from "../context/Context";
 
 const Navbar = () => {
-  const { database, username, isLoggedIn, setIsLoggedIn } = useContext(Context);
-  // Use useEffect to react to changes in the login state
+  const { database,allUsers, username, isLoggedIn, setIsLoggedIn } = useContext(Context);
+
   useEffect(() => {
-    // console.log("Login state changed: ", isLoggedIn);
+ 
   }, [isLoggedIn]);
+  // console.log("updated",allUsers[0].userName)
 
   const handleLoginToggle = () => {
-    // Toggle the login state when the login/logout button is clicked
+    
     setIsLoggedIn(!isLoggedIn);
   };
   const [searchInp, searchInpNew] = useState("");
@@ -101,25 +102,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      {/* <div className="flex justify-center mt-8">
-        <div className="flex justify-center  w-96 gap-4">
-          {database.map((data, index) => (
-            <div key={data.id} className="bg-white p-4 rounded shadow-lg">
-              <h3 className="text-lg font-semibold mb-2">{data.name}</h3>
-              <img
-                className="w-full h-1/2 object-cover mb-2"
-                src={data.imageUrl}
-                alt={data.name}
-              />
-              <div className="text-gray-700">
-                <p className="mb-1">${data.price}</p>
-                <p className="mb-1">Quantity: {data.quantity}</p>
-                <p className="mb-1">{data.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
+      
     </div>
   );
 };

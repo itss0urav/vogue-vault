@@ -5,14 +5,37 @@ import Navbar from "./Navbar";
 const UserProfile = () => {
   const { allUsers } = useContext(Context);
   const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState(allUsers[0].userName);
+  const [email, setEmail] = useState(allUsers[0].userEmail);
+  const [password, setPassword] = useState(allUsers[0].userPassword);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleUpdateProfile = () => {
-    // Implement your update profile logic here
+  const handleInputChange = (e) => {
+    switch (e.target.name) {
+      case "name":
+        setName(e.target.value);
+        break;
+      case "email":
+        setEmail(e.target.value);
+        break;
+      case "password":
+        setPassword(e.target.value);
+        break;
+      default:
+        break;
+    }
   };
+
+  const handleUpdateProfile = () => {
+    allUsers[0].userName = name;
+    allUsers[0].userEmail = email;
+    allUsers[0].userPassword = password;
+    
+  };
+  console.log("updated allUsers",allUsers)
 
   return (
     <div className="">
@@ -22,15 +45,37 @@ const UserProfile = () => {
           <h2 className="text-2xl font-bold text-center">User Profile</h2>
           <div className="flex justify-between">
             <label className="font-bold">Name:</label>
-            <span>{allUsers[0].userName}</span>
+            <input
+              className="text-end"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="flex justify-between">
             <label className="font-bold">Email:</label>
-            <span>{allUsers[0].userEmail}</span>
+            <input
+              className="text-end"
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="flex justify-between items-center">
             <label className="font-bold">Password:</label>
-            <span>{showPassword ? allUsers[0].userPassword : "******"}</span>
+            {showPassword ? (
+              <input
+              className="text-center"
+                type="text"
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+              />
+            ) : (
+              "******"
+            )}
             <button
               onClick={handleShowPassword}
               className="text-sm text-blue-500 underline"
