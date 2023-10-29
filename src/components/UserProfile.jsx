@@ -4,6 +4,9 @@ import Navbar from "./Navbar";
 
 const UserProfile = () => {
   const { allUsers, setAllUsers } = useContext(Context);
+
+  // temporary states for updating user data
+
   const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState(allUsers[0].userName);
   const [email, setEmail] = useState(allUsers[0].userEmail);
@@ -33,7 +36,7 @@ const UserProfile = () => {
   };
 
   const handleUpdateProfile = () => {
-    // Validate input (you can add more validation logic as needed)
+    // Validate input
     if (!name || !email || !password) {
       setError("All fields are required.");
       return;
