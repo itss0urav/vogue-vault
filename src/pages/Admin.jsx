@@ -4,7 +4,9 @@ import Context from "../context/Context";
 import Navbar from "../components/Navbar";
 
 const Admin = () => {
+
   const { isLoggedIn, allUsers } = useContext(Context);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) {
@@ -12,6 +14,7 @@ const Admin = () => {
     }
   }, [isLoggedIn, navigate]);
 
+  
   return (
     <div>
       <Navbar />

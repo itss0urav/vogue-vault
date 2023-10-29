@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
+  
+  // admin login temp states
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+
+  // navigate to login or signup if user refresh
 
   const navigate = useNavigate();
 
