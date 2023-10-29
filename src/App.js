@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import UserProfile from "./components/UserProfile";
 import { mensProducts } from "./data/MyData";
-import Category from "./components/Category";
+import CategoryProducts from "./components/CategoryProducts";
 import Wishlist from "./components/Wishlist";
 import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
@@ -77,12 +77,12 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/" element={<Home />} />
 
-            {/* products */}
+            {/* products filtered page */}
             {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (
               <Route
                 key={product}
                 path={`/${product}`}
-                element={<Category />}
+                element={<CategoryProducts />}
               />
             ))}
           </Routes>

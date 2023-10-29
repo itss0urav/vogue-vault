@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Context from "../context/Context";
 import BuyPage from "../pages/BuyPage";
-
+import Category from "./Category";
 const Body = () => {
   const {
     database,
@@ -36,7 +36,7 @@ const Body = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex justify-center gap-3 text-xl text-white bg-gray-700 rounded-md p-1 mb-4">
+      {/* <div className="flex justify-center gap-3 text-xl text-white bg-gray-700 rounded-md p-1 mb-4">
         {filteredArray.map((data, index) => (
           <Link
             to={`/${data}`}
@@ -45,7 +45,8 @@ const Body = () => {
             {data}
           </Link>
         ))}
-      </div>
+      </div> */}
+      <Category/>
 
       {selectedProduct ? (
         <BuyPage product={selectedProduct} />
