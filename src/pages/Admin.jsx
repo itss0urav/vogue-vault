@@ -25,6 +25,7 @@ const Admin = () => {
               <tr className="bg-gray-200">
                 <th className="border border-gray-300 px-4 py-2">Username</th>
                 <th className="border border-gray-300 px-4 py-2">Email</th>
+                <th className="border border-gray-300 px-4 py-2">Password</th>
               </tr>
             </thead>
             <tbody>
@@ -38,6 +39,9 @@ const Admin = () => {
                   </td>
                   <td className="border text-center border-gray-300 px-4 py-2">
                     {user.userEmail}
+                  </td>
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    {user.userPassword}
                   </td>
                 </tr>
               ))}
