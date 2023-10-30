@@ -1,16 +1,21 @@
-import { useLocation } from "react-router-dom";
 import React, { useContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Context from "../context/Context";
 import Navbar from "./Navbar";
 import Category from "./Category";
 
 const CategoryProducts = () => {
   const { database } = useContext(Context);
+  const navigate = useNavigate(); // useNavigate returns the navigate function directly
   const MyLocation = useLocation().pathname.split("/")[1];
   const productsFiltered = database.filter(
     (data) => data.category === MyLocation
   );
-  console.log(productsFiltered);
+
+  const handleProductClick = (product) => {
+    navigate(`/buy/${product.id}`);
+  };
+
   return (
     <div className="">
       <Navbar />
@@ -24,7 +29,8 @@ const CategoryProducts = () => {
             {productsFiltered.map((product) => (
               <div
                 key={product.id}
-                className="border rounded-lg overflow-hidden shadow-lg m-2"
+                className="border rounded-lg overflow-hidden shadow-lg m-2 cursor-pointer"
+                onClick={() => handleProductClick(product)}
               >
                 <h3 className="font-bold text-xl p-4">{product.name}</h3>
                 <img

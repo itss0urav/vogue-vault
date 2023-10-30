@@ -17,6 +17,7 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
 import "./App.css";
+import BuyPageFromFiltered from "./pages/BuyPageFromFiltered";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -76,6 +77,7 @@ function App() {
             <Route path="/help" element={<Help />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/" element={<Home />} />
+            <Route path="/buy/:productId" element={<BuyPageFromFiltered />} />
 
             {/* products filtered page */}
             {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (

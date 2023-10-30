@@ -5,14 +5,14 @@ import Navbar from "./Navbar";
 const UserProfile = () => {
   const { allUsers, setAllUsers } = useContext(Context);
 
-  // temporary states for updating user data
+   // temporary states for updating user data
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [name, setName] = useState(allUsers[0].userName);
-  const [email, setEmail] = useState(allUsers[0].userEmail);
-  const [password, setPassword] = useState(allUsers[0].userPassword);
-  const [error, setError] = useState(null);
-
+   const [showPassword, setShowPassword] = useState(false);
+   const [name, setName] = useState(allUsers && allUsers[0] ? allUsers[0].userName : "");
+   const [email, setEmail] = useState(allUsers && allUsers[0] ? allUsers[0].userEmail : "");
+   const [password, setPassword] = useState(allUsers && allUsers[0] ? allUsers[0].userPassword : "");
+   const [error, setError] = useState(null);
+ 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };

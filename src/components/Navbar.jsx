@@ -1,27 +1,28 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
-import { GrUserAdmin, GrServices } from "react-icons/gr";
+import { GrUserAdmin } from "react-icons/gr";
 import { GiSelfLove } from "react-icons/gi";
-import { BiLike, BiDislike, BiUserCircle } from "react-icons/bi";
+import { BiUserCircle } from "react-icons/bi";
 import { BsCartCheck } from "react-icons/bs";
 import Context from "../context/Context";
 
-const Navbar = () => {
-  const { database,allUsers, username, isLoggedIn, setIsLoggedIn } = useContext(Context);
 
-  useEffect(() => {
- 
-  }, [isLoggedIn,username]);
-  const updatedName=allUsers[0].userName;
-  console.log("updated",updatedName)
+const Navbar = () => {
+  const { allUsers, username, isLoggedIn, setIsLoggedIn } = useContext(Context);
+
+  useEffect(() => {}, [isLoggedIn, username]);
+  let updatedName = "username"; // default value
+  if (Array.isArray(allUsers) && allUsers.length > 0 && allUsers[0].userName) {
+    updatedName = allUsers[0].userName;
+  }
+  console.log("updated", updatedName);
   const handleLoginToggle = () => {
-    
     setIsLoggedIn(!isLoggedIn);
   };
   const [searchInp, searchInpNew] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+  // const [filteredData, setFilteredData] = useState([]);
   // console.log(searchInp);
 
   const handleSearch = () => {
@@ -39,7 +40,7 @@ const Navbar = () => {
           <Link to="/">Vogue Vault</Link>
           <div className="flex ml-12 items-center">
             <input
-              // value={searchInp}
+              value={searchInp}
               onChange={(e) => searchInpNew(e.target.value)}
               type=" text"
               className="text-center text-black rounded-md "
@@ -84,7 +85,9 @@ const Navbar = () => {
           <Link to="/UserProfile">
             <div className="flex gap-1">
               <BiUserCircle className=" text-2xl mt-0.5" />
-              <li className="text-cyan-300 text-lg font-medium">{updatedName}</li>
+              <li className="text-cyan-300 text-lg font-medium">
+                {updatedName}
+              </li>
             </div>
           </Link>
           <li className="text-3xl">
@@ -102,7 +105,6 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      
     </div>
   );
 };
