@@ -6,12 +6,12 @@ const BuyPageFromFiltered = () => {
   const nav = useNavigate();
   const { database } = useContext(Context);
 
-  const myLoc = useLocation().pathname.split("/")[2];
+  const myLoc = parseInt(useLocation().pathname.split("/")[2]);
   console.log(myLoc);
   const handleQuantityChange = (event) => {
     setQuantity(parseInt(event.target.value, 10));
   };
-  const product = database.find((data) => data.id == myLoc);
+  const product = database.find((data) => data.id === myLoc);
   console.log("this the id", myLoc);
   console.log("this the product", product);
   // const product = database[myLoc+1].id;
