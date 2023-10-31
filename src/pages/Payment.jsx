@@ -9,7 +9,7 @@ const Payment = () => {
 
   const location = useLocation();
   const totalPrice = location.state.totalPrice;
-  console.log("total price",totalPrice)
+  console.log("total price", totalPrice);
   // for card data
 
   const [cardNumber, setCardNumber] = useState("");
@@ -28,7 +28,7 @@ const Payment = () => {
   return (
     <div className="">
       <Navbar />
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto mt-4 p-4">
         <h2 className="text-2xl font-bold mb-4">Payment Details</h2>
         <form onSubmit={handlePayment}>
           <div className="mb-4">

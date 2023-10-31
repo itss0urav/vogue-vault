@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./Navbar";
 import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const [quantity, setQuantity] = useState(1);
+  const handleQuantityChange = (event) => {
+    setQuantity(parseInt(event.target.value, 10));
+  };
+
   const nav = useNavigate();
   const { cart } = useContext(Context);
 
@@ -12,7 +17,13 @@ const Cart = () => {
   };
 
   // Calculate total price
-  const totalPrice = cart.reduce((total, data) => total + data.price, 0);
+  const totalPrice = cart.reduce(
+    (total, data) => total + data.price ,
+    0
+  );
+  
+  // const totalPrice = parseInt(cart.price * quantity);
+  console.log(totalPrice);
 
   return (
     <div className="">
@@ -42,6 +53,21 @@ const Cart = () => {
                 <p className="mb-1">₹{data.price}</p>
                 <p className="mb-1">{data.description}</p>
               </div>
+              <div className="mb-4 flex items-center">
+                <label className="mr-2 text-sm font-medium text-gray-600">
+                  Quantity:
+                </label>
+                <input
+                  type="number"
+                  min="1"
+                  className="w-16 h-10 border rounded px-3"
+                  value={data.quantity}
+                  onChange={handleQuantityChange}
+                />
+              </div>
+              {/* <h3 className="text-lg font-semibold mb-2">
+                Total Price: ₹{totalPrice.toFixed(2)}
+              </h3> */}
             </div>
           ))}
         </div>

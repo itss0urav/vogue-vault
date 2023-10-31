@@ -46,47 +46,46 @@ const Body = () => {
           </Link>
         ))}
       </div> */}
-      <Category/>
+      <Category />
 
       {selectedProduct ? (
         <BuyPage product={selectedProduct} />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {database.map((product) => (
-  <div
-    key={product.id}
-    className="bg-white p-4 rounded shadow-lg cursor-pointer flex flex-col"
-    onClick={() => handleProductClick(product)}
-  >
-    <div className="flex-grow">
-      <img
-        className="object-cover mb-4"
-        src={product.imageUrl}
-        alt={product.name}
-      />
-      <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-      <div className="text-gray-700">
-        <p className="mb-1">₹{product.price}</p>
-        <p className="mb-1">{product.description}</p>
-      </div>
-    </div>
-    <div className="flex  gap-2 mt-2">
-      <button
-        onClick={(event) => addToCart(event, product)}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        {cartText[product.id] || "Add to Cart"}
-      </button>
-      <button
-        onClick={(event) => addToWishlist(event, product)}
-        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-      >
-        {wishlistText[product.id] || "Add to Wishlist"}
-      </button>
-    </div>
-  </div>
-))}
-
+            <div
+              key={product.id}
+              className="bg-white p-4 rounded shadow-lg cursor-pointer flex flex-col"
+              onClick={() => handleProductClick(product)}
+            >
+              <div className="flex-grow">
+                <img
+                  className="object-cover mb-4"
+                  src={product.imageUrl}
+                  alt={product.name}
+                />
+                <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+                <div className="text-gray-700">
+                  <p className="mb-1">₹{product.price}</p>
+                  <p className="mb-1">{product.description}</p>
+                </div>
+              </div>
+              <div className="flex  gap-2 mt-2">
+                <button
+                  onClick={(event) => addToCart(event, product)}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  {cartText[product.id] || "Add to Cart"}
+                </button>
+                <button
+                  onClick={(event) => addToWishlist(event, product)}
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  {wishlistText[product.id] || "Add to Wishlist"}
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
