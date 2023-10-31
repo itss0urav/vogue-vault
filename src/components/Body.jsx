@@ -67,7 +67,6 @@ const Body = () => {
       <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
       <div className="text-gray-700">
         <p className="mb-1">₹{product.price}</p>
-        <p className="mb-1">Quantity: {product.quantity}</p>
         <p className="mb-1">{product.description}</p>
       </div>
     </div>

@@ -39,7 +39,7 @@ const CategoryProducts = () => {
                   alt={product.name}
                 />
                 <div className="p-4">
-                  <p className="font-bold text-lg">${product.price}</p>
+                  <p className="font-bold text-lg">₹{product.price}</p>
                   <p className="text-gray-700">Quantity: {product.quantity}</p>
                   <p className="text-gray-500">{product.description}</p>
                 </div>

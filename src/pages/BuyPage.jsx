@@ -50,7 +50,7 @@ const BuyPage = ({ product }) => {
         />
       </div>
       <h3 className="text-lg font-semibold mb-2">
-        Total Price: ${totalPrice.toFixed(2)}
+        Total Price: ₹{totalPrice.toFixed(2)}
       </h3>
       <div className="flex items-center space-x-4">
         <button

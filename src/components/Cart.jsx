@@ -20,7 +20,7 @@ const Cart = () => {
       <div className="container mx-auto p-4">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">
-            Total Price: ${totalPrice.toFixed(2)}
+            Total Price: ₹{totalPrice.toFixed(2)}
           </h2>
           <button
             onClick={handleBuyNow}
@@ -39,7 +39,7 @@ const Cart = () => {
               />
               <h3 className="text-lg font-semibold mb-2">{data.name}</h3>
               <div className="text-gray-700">
-                <p className="mb-1">${data.price}</p>
+                <p className="mb-1">₹{data.price}</p>
                 <p className="mb-1">{data.description}</p>
               </div>
             </div>
