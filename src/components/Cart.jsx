@@ -4,13 +4,13 @@ import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const [quantity, setQuantity] = useState(1);
-  const handleQuantityChange = (event) => {
-    setQuantity(parseInt(event.target.value, 10));
-  };
-
   const nav = useNavigate();
-  const { cart } = useContext(Context);
+  const { cart, setCart } = useContext(Context);
+
+  const handleQuantityChange = (id, event) => {
+    const newQuantity = parseInt(event.target.value, 10);
+    setCart(cart.map(item => item.id === id ? { ...item, quantity: newQuantity } : item));
+  };
 
   const handleBuyNow = () => {
     nav("/Payment", { state: { totalPrice } });
@@ -18,12 +18,9 @@ const Cart = () => {
 
   // Calculate total price
   const totalPrice = cart.reduce(
-    (total, data) => total + data.price ,
+    (total, item) => total + item.price * item.quantity,
     0
   );
-  
-  // const totalPrice = parseInt(cart.price * quantity);
-  console.log(totalPrice);
 
   return (
     <div className="">
@@ -41,17 +38,17 @@ const Cart = () => {
           </button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {cart.map((data, index) => (
-            <div key={data.id} className="bg-white p-4 rounded shadow-lg">
+          {cart.map((item, index) => (
+            <div key={item.id} className="bg-white p-4 rounded shadow-lg">
               <img
                 className="object-cover mb-2"
-                src={data.imageUrl}
-                alt={data.name}
+                src={item.imageUrl}
+                alt={item.name}
               />
-              <h3 className="text-lg font-semibold mb-2">{data.name}</h3>
+              <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
               <div className="text-gray-700">
-                <p className="mb-1">₹{data.price}</p>
-                <p className="mb-1">{data.description}</p>
+                <p className="mb-1">₹{item.price}</p>
+                <p className="mb-1">{item.description}</p>
               </div>
               <div className="mb-4 flex items-center">
                 <label className="mr-2 text-sm font-medium text-gray-600">
@@ -61,13 +58,10 @@ const Cart = () => {
                   type="number"
                   min="1"
                   className="w-16 h-10 border rounded px-3"
-                  value={data.quantity}
-                  onChange={handleQuantityChange}
+                  value={item.quantity}
+                  onChange={(event) => handleQuantityChange(item.id, event)}
                 />
               </div>
-              {/* <h3 className="text-lg font-semibold mb-2">
-                Total Price: ₹{totalPrice.toFixed(2)}
-              </h3> */}
             </div>
           ))}
         </div>

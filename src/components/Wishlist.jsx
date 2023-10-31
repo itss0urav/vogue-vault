@@ -5,14 +5,25 @@ import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
   const nav = useNavigate();
-  const { wishlist } = useContext(Context);
+  const { wishlist, setWishlist } = useContext(Context);
 
+  const handleQuantityChange = (id, event) => {
+    const newQuantity = parseInt(event.target.value, 10);
+    setWishlist(
+      wishlist.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
   const handleBuyNow = () => {
     nav("/Payment", { state: { totalPrice } });
   };
 
   // Calculate total price
-  const totalPrice = wishlist.reduce((total, data) => total + data.price, 0);
+  const totalPrice = wishlist.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="">
@@ -41,6 +52,18 @@ const Wishlist = () => {
               <div className="text-gray-700">
                 <p className="mb-1">${data.price}</p>
                 <p className="mb-1">{data.description}</p>
+              </div>
+              <div className="mb-4 flex items-center">
+                <label className="mr-2 text-sm font-medium text-gray-600">
+                  Quantity:
+                </label>
+                <input
+                  type="number"
+                  min="1"
+                  className="w-16 h-10 border rounded px-3"
+                  value={data.quantity}
+                  onChange={(event) => handleQuantityChange(data.id, event)}
+                />
               </div>
             </div>
           ))}
