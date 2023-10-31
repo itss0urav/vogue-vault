@@ -24,6 +24,8 @@ const BuyPageFromFiltered = () => {
   const handleBuyNow = () => {
     nav("/Payment", { state: { totalPrice } });
   };
+  const boughtUsers = parseInt(Math.random() * 10000);
+  console.log(boughtUsers);
 
   return (
     <div className="container mx-auto p-4">
@@ -48,6 +50,9 @@ const BuyPageFromFiltered = () => {
           onChange={handleQuantityChange}
         />
       </div>
+      <p className="mb-1 text-sm text-cyan-700 font-bold ">
+        {boughtUsers} people bought this product
+      </p>
       <h3 className="text-lg font-semibold mb-2">
         Total Price: ₹{totalPrice.toFixed(2)}
       </h3>

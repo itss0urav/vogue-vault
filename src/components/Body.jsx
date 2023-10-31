@@ -4,6 +4,7 @@ import Context from "../context/Context";
 import BuyPage from "../pages/BuyPage";
 import Category from "./Category";
 const Body = () => {
+ 
   const {
     database,
     setCart,
@@ -66,8 +67,15 @@ const Body = () => {
                 />
                 <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
                 <div className="text-gray-700">
-                  <p className="mb-1">₹{product.price}</p>
+                  <p className="mb-1 text-xl text-green-700">
+                    ₹{product.price}
+                  </p>
+                  <p className="mb-1 text-xl text-red-700 line-through">
+                    ₹{product.price + 60}
+                  </p>
+
                   <p className="mb-1">{product.description}</p>
+                  
                 </div>
               </div>
               <div className="flex  gap-2 mt-2">

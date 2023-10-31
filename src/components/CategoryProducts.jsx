@@ -40,6 +40,9 @@ const CategoryProducts = () => {
                 />
                 <div className="p-4">
                   <p className="font-bold text-lg">₹{product.price}</p>
+                  <p className="mb-1 text-xl text-red-700 line-through">
+                    ₹{product.price+60}
+                  </p>
                   <p className="text-gray-700">Quantity: {product.quantity}</p>
                   <p className="text-gray-500">{product.description}</p>
                 </div>
