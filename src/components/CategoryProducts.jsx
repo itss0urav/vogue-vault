@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import Category from "./Category";
 
 const CategoryProducts = () => {
-  const { database } = useContext(Context);
+  const { database, setCart, setCartText, cartText } = useContext(Context);
   const navigate = useNavigate(); // useNavigate returns the navigate function directly
   const MyLocation = useLocation().pathname.split("/")[1];
   const productsFiltered = database.filter(
@@ -14,6 +14,11 @@ const CategoryProducts = () => {
 
   const handleProductClick = (product) => {
     navigate(`/buy/${product.id}`);
+  };
+  const addToCart = (event, product) => {
+    event.stopPropagation();
+    setCart((currentCart) => [...currentCart, product]);
+    setCartText({ ...cartText, [product.id]: "Added to Cart" });
   };
 
   return (
@@ -34,17 +39,31 @@ const CategoryProducts = () => {
               >
                 <h3 className="font-bold text-xl p-4">{product.name}</h3>
                 <img
-                  className="w-full h-64 object-cover"
+                  className="mb-4 object-cover"
                   src={product.imageUrl}
                   alt={product.name}
                 />
                 <div className="p-4">
                   <p className="font-bold text-lg">₹{product.price}</p>
                   <p className="mb-1 text-xl text-red-700 line-through">
-                    ₹{product.price+60}
+                    ₹{product.price + 60}
                   </p>
-                  <p className="text-gray-700">Quantity: {product.quantity}</p>
+                  {/* <p className="text-gray-700">Quantity: {product.quantity}</p> */}
                   <p className="text-gray-500">{product.description}</p>
+                </div>
+                <div className="flex justify-center  gap-2 mt-2">
+                  <button
+                    onClick={(event) => addToCart(event, product)}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-4 rounded"
+                  >
+                    {cartText[product.id] || "Add to Cart"}
+                  </button>
+                  {/* <button
+                    onClick={(event) => addToWishlist(event, product)}
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    {wishlistText[product.id] || "Add to Wishlist"}
+                  </button> */}
                 </div>
               </div>
             ))}

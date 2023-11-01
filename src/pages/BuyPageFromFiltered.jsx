@@ -1,31 +1,35 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Context from "../context/Context";
 import { useLocation, useNavigate } from "react-router-dom";
+
 const BuyPageFromFiltered = () => {
   const [quantity, setQuantity] = useState(1);
+  const [boughtUsers, setBoughtUsers] = useState(0);
   const nav = useNavigate();
   const { database } = useContext(Context);
 
   const myLoc = parseInt(useLocation().pathname.split("/")[2]);
   console.log(myLoc);
+
+  useEffect(() => {
+    const users = parseInt(Math.random() * 10000);
+    setBoughtUsers(users);
+    console.log(users);
+  }, []);
+
   const handleQuantityChange = (event) => {
     setQuantity(parseInt(event.target.value, 10));
   };
+  
   const product = database.find((data) => data.id === myLoc);
   console.log("this the id", myLoc);
   console.log("this the product", product);
-  // const product = database[myLoc+1].id;
-  // The 10 here is the radix.
-  //It tells parseInt to convert the string into a decimal number.
-  // This is necessary because some numbers could be interpreted as octal (base 8) or hexadecimal (base 16) values.
-  //By specifying 10, we ensure that the value is always interpreted as a decimal number.
 
   const totalPrice = product.price * quantity;
+  
   const handleBuyNow = () => {
     nav("/Payment", { state: { totalPrice } });
   };
-  const boughtUsers = parseInt(Math.random() * 10000);
-  console.log(boughtUsers);
 
   return (
     <div className="container mx-auto p-4">
@@ -51,7 +55,7 @@ const BuyPageFromFiltered = () => {
         />
       </div>
       <p className="mb-1 text-sm text-cyan-700 font-bold ">
-        {boughtUsers} people bought this product
+        {boughtUsers} users bought this product
       </p>
       <h3 className="text-lg font-semibold mb-2">
         Total Price: ₹{totalPrice.toFixed(2)}

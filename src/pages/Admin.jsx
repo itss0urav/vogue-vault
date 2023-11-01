@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../context/Context";
 import Navbar from "../components/Navbar";
 
 const Admin = () => {
-
-  const { isLoggedIn, allUsers } = useContext(Context);
-
+  const { isLoggedIn, allUsers, bannedUsers, setBannedUsers } =
+    useContext(Context);
+  console.log(bannedUsers);
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) {
@@ -14,7 +14,16 @@ const Admin = () => {
     }
   }, [isLoggedIn, navigate]);
 
-  
+  const handleBan = (userEmail) => {
+    // setBannedUsers([...bannedUsers, userEmail]);
+    setBannedUsers(true);
+  };
+
+  const handleUnban = (userEmail) => {
+    // setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
+    setBannedUsers(false);
+  };
+
   return (
     <div>
       <Navbar />
@@ -29,6 +38,8 @@ const Admin = () => {
                 <th className="border border-gray-300 px-4 py-2">Username</th>
                 <th className="border border-gray-300 px-4 py-2">Email</th>
                 <th className="border border-gray-300 px-4 py-2">Password</th>
+                <th className="border border-gray-300 px-4 py-2">Status</th>
+                <th className="border border-gray-300 px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -45,6 +56,26 @@ const Admin = () => {
                   </td>
                   <td className="border text-center border-gray-300 px-4 py-2">
                     {user.userPassword}
+                  </td>
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    {setBannedUsers(true) ? "Banned" : "Active"}
+                  </td>
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    {setBannedUsers(false) ? (
+                      <button
+                        className="bg-green-600 text-white pl-2 pr-2 rounded-md"
+                        onClick={() => handleUnban(user.userEmail)}
+                      >
+                        Unban
+                      </button>
+                    ) : (
+                      <button
+                        className="bg-red-600 text-white pl-2 pr-2 rounded-md"
+                        onClick={() => handleBan(user.userEmail)}
+                      >
+                        Ban
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}

@@ -1,8 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
 const BuyPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const [boughtUsers, setBoughtUsers] = useState(0);
+
+
+  useEffect(() => {
+    const users = parseInt(Math.random() * 10000);
+    setBoughtUsers(users);
+    console.log(users);
+  }, []);
+
   const nav = useNavigate();
   const { setCart, cartText, setCartText } = useContext(Context);
 
@@ -25,8 +34,8 @@ const BuyPage = ({ product }) => {
     setCart((currentCart) => [...currentCart, product]);
     setCartText({ ...cartText, [product.id]: "Added to Cart" });
   };
-  const boughtUsers = parseInt(Math.random() * 10000);
-  console.log(boughtUsers);
+  // const boughtUsers = parseInt(Math.random() * 10000);
+  // console.log(boughtUsers);
   return (
     <div className="container mx-auto p-4">
       <div className="flex flex-col items-center mb-8">
@@ -51,7 +60,7 @@ const BuyPage = ({ product }) => {
         />
       </div>
       <p className="mb-1 text-sm text-cyan-700 font-bold ">
-        {boughtUsers} people bought this product
+        {boughtUsers} users bought this product
       </p>
       <h3 className="text-lg font-semibold mb-2">
         Total Price: ₹{totalPrice.toFixed(2)}
