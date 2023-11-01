@@ -2,12 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Context from "../context/Context";
 import React, { useContext, useState } from "react";
 import logo from "../assets/VV-Transparent.png";
+
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
-  const { email, password, allUsers, setIsLoggedIn } = useContext(Context);
+  const { allUsers, setIsLoggedIn ,bannedUsers } = useContext(Context);
 
   const handleLogin = () => {
     const user = allUsers.find(
@@ -15,10 +15,13 @@ const Login = () => {
         user.userEmail === loginInfo.email &&
         user.userPassword === loginInfo.password
     );
-
     if (user) {
-      setIsLoggedIn(true);
-      navigate("/");
+      if (bannedUsers.includes(user.userEmail)) {
+        setErrorMessage("Your account has been banned.");
+      } else {
+        setIsLoggedIn(true);
+        navigate("/");
+      }
     } else {
       setErrorMessage("Incorrect email or password. Please try again.");
     }
