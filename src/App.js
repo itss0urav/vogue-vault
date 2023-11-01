@@ -31,7 +31,7 @@ function App() {
   const [wishlist, setWishlist] = useState([]);
   const [cartText, setCartText] = useState({});
   const [wishlistText, setWishlistText] = useState({});
-  const [bannedUsers, setBannedUsers] = useState(false);
+  const [bannedUsers, setBannedUsers] = useState([]);
 
   console.log("the cart products", cart);
   console.log("the wishlist products", wishlist);

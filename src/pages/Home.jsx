@@ -5,13 +5,14 @@ import Context from "../context/Context";
 import Body from "../components/Body";
 
 const Home = () => {
-  const { isLoggedIn } = useContext(Context);
+  const { isLoggedIn, bannedUsers } = useContext(Context);
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/login") || navigate("/signup");
     }
   }, [isLoggedIn, navigate]);
+  console.log("from home", bannedUsers);
   return (
     <div>
       <Navbar />

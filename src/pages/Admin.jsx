@@ -15,13 +15,13 @@ const Admin = () => {
   }, [isLoggedIn, navigate]);
 
   const handleBan = (userEmail) => {
-    // setBannedUsers([...bannedUsers, userEmail]);
-    setBannedUsers(true);
+    setBannedUsers([...bannedUsers, userEmail]);
+    // setBannedUsers(true);
   };
 
   const handleUnban = (userEmail) => {
-    // setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
-    setBannedUsers(false);
+    setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
+    // setBannedUsers(false);
   };
 
   return (
@@ -58,10 +58,10 @@ const Admin = () => {
                     {user.userPassword}
                   </td>
                   <td className="border text-center border-gray-300 px-4 py-2">
-                    {setBannedUsers(true) ? "Banned" : "Active"}
+                    {bannedUsers.includes(user.userEmail) ? "Banned" : "Active"}
                   </td>
                   <td className="border text-center border-gray-300 px-4 py-2">
-                    {setBannedUsers(false) ? (
+                    {bannedUsers.includes(user.userEmail) ? (
                       <button
                         className="bg-green-600 text-white pl-2 pr-2 rounded-md"
                         onClick={() => handleUnban(user.userEmail)}
