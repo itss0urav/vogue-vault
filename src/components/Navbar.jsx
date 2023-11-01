@@ -8,9 +8,9 @@ import { BiUserCircle } from "react-icons/bi";
 import { BsCartCheck } from "react-icons/bs";
 import Context from "../context/Context";
 
-
 const Navbar = () => {
-  const { allUsers, username, isLoggedIn, setIsLoggedIn } = useContext(Context);
+  const { allUsers, username, isLoggedIn, setIsLoggedIn, database } =
+    useContext(Context);
 
   useEffect(() => {}, [isLoggedIn, username]);
   let updatedName = "username"; // default value
@@ -22,16 +22,16 @@ const Navbar = () => {
     setIsLoggedIn(!isLoggedIn);
   };
   const [searchInp, searchInpNew] = useState("");
-  // const [filteredData, setFilteredData] = useState([]);
-  // console.log(searchInp);
+  const [filteredData, setFilteredData] = useState([]);
+  console.log(searchInp);
 
   const handleSearch = () => {
-    // const filteredData = arts.filter((art) => {
-    //   return art.names.toLowerCase().includes(searchInp.toLowerCase());
-    // });
-    // setFilteredData(filteredData);
-    // console.log(filteredData);
+    const newfilteredData = database.filter((data) => {
+      return data.name.toLowerCase().includes(searchInp.toLowerCase());
+    });
+    setFilteredData(newfilteredData);
   };
+  console.log(filteredData);
 
   return (
     <div>
@@ -104,6 +104,23 @@ const Navbar = () => {
             </p>
           </li>
         </ul>
+      </div>
+      <div className="">
+      {filteredData.map((item) => (
+  <div key={item.id} className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+    <div className="md:flex">
+      <div className="md:flex-shrink-0">
+        <img className="h-48 w-full object-cover md:w-48" src={item.imageUrl} alt={item.name} />
+      </div>
+      <div className="p-8">
+        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{item.name}</div>
+        <p className="block mt-1 text-lg leading-tight font-medium text-black">{item.price}</p>
+        <p className="mt-2 text-gray-500">{item.description}</p>
+      </div>
+    </div>
+  </div>
+))}
+
       </div>
     </div>
   );
