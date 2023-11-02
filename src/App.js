@@ -32,10 +32,13 @@ function App() {
   const [cartText, setCartText] = useState({});
   const [wishlistText, setWishlistText] = useState({});
   const [bannedUsers, setBannedUsers] = useState([]);
-
+  const addProduct = (newProduct) => {
+    setDatabase([...database, newProduct]);
+  };
   console.log("the cart products", cart);
   console.log("the wishlist products", wishlist);
   const dataExpanded = {
+    addProduct,
     username,
     setUsername,
     isLoggedIn,
@@ -62,6 +65,9 @@ function App() {
     setBannedUsers,
   };
 
+  const filtered = new Set(database.map((data) => data.category));
+  const filteredArray = [...filtered];
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -83,7 +89,7 @@ function App() {
             <Route path="/buy/:productId" element={<BuyPageFromFiltered />} />
 
             {/* products filtered page */}
-            {["pants", "shoes", "hoodie", "sunglasses"].map((product) => (
+            {filteredArray.map((product) => (
               <Route
                 key={product}
                 path={`/${product}`}

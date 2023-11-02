@@ -4,8 +4,15 @@ import Context from "../context/Context";
 import Navbar from "../components/Navbar";
 
 const Admin = () => {
-  const { isLoggedIn, allUsers, bannedUsers, setBannedUsers } =
-    useContext(Context);
+  const {
+    isLoggedIn,
+    allUsers,
+    bannedUsers,
+    setBannedUsers,
+    addProduct,
+    database,
+  } = useContext(Context);
+
   console.log(bannedUsers);
   const navigate = useNavigate();
   useEffect(() => {
@@ -14,20 +21,55 @@ const Admin = () => {
     }
   }, [isLoggedIn, navigate]);
 
+  // add product
+
+  const [newProduct, setNewProduct] = useState({
+    id: "",
+    name: "",
+    category: "",
+    imageUrl: "",
+    price: 0,
+    quantity: 1,
+    description: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct({ ...newProduct, [name]: value });
+  };
+
+  const handleAddProduct = () => {
+    // Validate new product data here if necessary
+
+    // Call addProduct function from context to add the new product
+    addProduct(newProduct);
+
+    // Clear the form after adding the product
+    setNewProduct({
+      id: "",
+      name: "",
+      category: "",
+      imageUrl: "",
+      price: 0,
+      quantity: 1,
+      description: "",
+    });
+  };
+
+  // user management
+
   const handleBan = (userEmail) => {
     setBannedUsers([...bannedUsers, userEmail]);
-    // setBannedUsers(true);
   };
 
   const handleUnban = (userEmail) => {
     setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
-    // setBannedUsers(false);
   };
 
   return (
     <div>
       <Navbar />
-      <div className="mt-8">
+      <div className="container mx-auto mt-8 p-4">
         <h2 className="text-center text-2xl font-bold text-gray-900 mb-4">
           All Users
         </h2>
@@ -64,7 +106,6 @@ const Admin = () => {
                     {bannedUsers.includes(user.userEmail) ? (
                       <button
                         className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
-                        // className="bg-green-600 text-white pl-2 pr-2 rounded-md"
                         onClick={() => handleUnban(user.userEmail)}
                       >
                         Unban
@@ -72,7 +113,6 @@ const Admin = () => {
                     ) : (
                       <button
                         className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
-                        // className="bg-red-600 text-white pl-2 pr-2 rounded-md"
                         onClick={() => handleBan(user.userEmail)}
                       >
                         Ban
@@ -83,6 +123,99 @@ const Admin = () => {
               ))}
             </tbody>
           </table>
+        </div>
+        <h2 className="text-center text-2xl font-bold text-gray-900 mb-4">
+          Add New Product
+        </h2>
+        <div className="max-w-md mx-auto">
+          <form>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Product Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={newProduct.name}
+                onChange={handleInputChange}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter product name"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Category
+              </label>
+              <input
+                type="text"
+                name="category"
+                value={newProduct.category}
+                onChange={handleInputChange}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter category"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Image URL
+              </label>
+              <input
+                type="text"
+                name="imageUrl"
+                value={newProduct.imageUrl}
+                onChange={handleInputChange}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter image URL"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Price
+              </label>
+              <input
+                type="number"
+                name="price"
+                value={newProduct.price}
+                onChange={handleInputChange}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter price"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Quantity
+              </label>
+              <input
+                type="number"
+                name="quantity"
+                value={newProduct.quantity}
+                onChange={handleInputChange}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter quantity"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Description
+              </label>
+              <textarea
+                name="description"
+                value={newProduct.description}
+                onChange={handleInputChange}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"
+                placeholder="Enter description"
+              ></textarea>
+            </div>
+            <div className="flex items-center justify-center mt-6">
+              <button
+                type="button"
+                onClick={handleAddProduct}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Add Product
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
