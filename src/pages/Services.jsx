@@ -1,93 +1,27 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+
 const ServicePage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-xl mx-auto">
-          <h1 className="text-3xl font-extrabold text-gray-900">
-            Create an Account and Share Your Art
-          </h1>
-          <p className="mt-4 text-xl text-gray-600">
-            Welcome to our art gallery community! We're excited to have you
-            share your artwork with us. Follow these steps to get started:
-          </p>
-
-          {/* Step 1 */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Step 1: Create an Account
-            </h2>
-            <p className="mt-2 text-gray-600">
-              Click on the "Sign Up" or "Create Account" button on the top right
-              corner of our website.
-            </p>
-            <img
-              src="/signup-screenshot.png"
-              alt="Sign Up Screenshot"
-              className="mt-4 rounded-lg shadow-md"
-            />
-          </div>
-
-          {/* Step 2 */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Step 2: Fill Out Your Details
-            </h2>
-            <p className="mt-2 text-gray-600">
-              Provide your username, email address, and a secure password. Click
-              "Create Account."
-            </p>
-            <img
-              src="/signup-form-screenshot.png"
-              alt="Sign Up Form Screenshot"
-              className="mt-4 rounded-lg shadow-md"
-            />
-          </div>
-
-          {/* Step 3 */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Step 3: Verify Your Email
-            </h2>
-            <p className="mt-2 text-gray-600">
-              Check your email inbox for a verification link and click on it to
-              activate your account.
-            </p>
-            <img
-              src="/email-verification-screenshot.png"
-              alt="Email Verification Screenshot"
-              className="mt-4 rounded-lg shadow-md"
-            />
-          </div>
-
-          {/* Step 4 */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Step 4: Share Your Art
-            </h2>
-            <p className="mt-2 text-gray-600">
-              Log in to your account, navigate to the "Upload Art" section, and
-              follow the instructions to share your artwork with our community.
-            </p>
-            <img
-              src="/upload-art-screenshot.png"
-              alt="Upload Art Screenshot"
-              className="mt-4 rounded-lg shadow-md"
-            />
-          </div>
-
-          {/* Additional Info */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Additional Information
-            </h2>
-            <p className="mt-2 text-gray-600">
-              If you encounter any issues or have questions, feel free to
-              contact our support team at support@artgallery.com.
-            </p>
-          </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="text-3xl font-semibold text-center mb-8">Our Services</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Service Card */}
+          {[
+            { title: "Free Shipping", description: "Enjoy free shipping on all orders over ₹500." },
+            { title: "24/7 Customer Support", description: "Our customer support team is available 24/7 to help you with your queries." },
+            { title: "Easy Returns", description: "Not satisfied with your purchase? Return it within 30 days for a full refund." },
+            { title: "Secure Payments", description: "Your payments are secure with our top-of-the-line encryption methods." },
+            { title: "Quality Guarantee", description: "All our products are guaranteed to be of the highest quality." },
+            { title: "Fast Delivery", description: "Get your products delivered to your doorstep in as fast as 2 days." }
+          ].map((service, index) => (
+            <div key={index} className="bg-white shadow-lg rounded-lg p-6">
+              <h2 className="text-xl font-bold mb-4">{service.title}</h2>
+              <p className="text-gray-700">{service.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </>

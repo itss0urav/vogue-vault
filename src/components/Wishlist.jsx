@@ -19,6 +19,11 @@ const Wishlist = () => {
     nav("/Payment", { state: { totalPrice } });
   };
 
+  const handleRemove = (id) => {
+    setWishlist(wishlist.filter((data) => data.id !== id));
+  };
+
+
   // Calculate total price
   const totalPrice = wishlist.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -65,6 +70,12 @@ const Wishlist = () => {
                   onChange={(event) => handleQuantityChange(data.id, event)}
                 />
               </div>
+              <button
+                className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
+                onClick={() => handleRemove(data.id)}
+              >
+                Remove
+              </button>
             </div>
           ))}
         </div>

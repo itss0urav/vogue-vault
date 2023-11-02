@@ -18,10 +18,10 @@ const Help = () => {
           <p className="mt-2 text-center text-sm text-gray-600">
             Email us at:{" "}
             <a
-              href="mailto:help@example.com"
+              href="mailto:souravhacks987@gmail.com"
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
-              help@example.com
+              souravhacks987@gmail.com
             </a>
           </p>
         </div>

@@ -1,43 +1,43 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 
-const Terms = () => {
+const TosPage = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <>
       <Navbar />
-      <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-semibold mb-4">Terms of Service</h1>
-        <p className="text-gray-700 mb-4">
-          Welcome to our Art Gallery website! By using our website, you agree to
-          comply with and be bound by the following terms and conditions of use.
-        </p>
-        <h2 className="text-lg font-semibold mb-2">1. Acceptance of Terms</h2>
-        <p className="text-gray-700 mb-4">
-          By accessing or using this website in any manner, you agree to these
-          Terms of Service.
-        </p>
-        <h2 className="text-lg font-semibold mb-2">2. User Accounts</h2>
-        <p className="text-gray-700 mb-4">
-          To access certain features of the website, you may be required to
-          create a user account. You are responsible for maintaining the
-          confidentiality of your account credentials.
-        </p>
-        <h2 className="text-lg font-semibold mb-2">3. User Content</h2>
-        <p className="text-gray-700 mb-4">
-          Users may post, upload, and/or contribute (“post”) content to the
-          website. You are solely responsible for the content you post.
-        </p>
-        <h2 className="text-lg font-semibold mb-2">4. Prohibited Activities</h2>
-        <p className="text-gray-700 mb-4">
-          You agree not to engage in any of the following prohibited activities:
-          (a) copying, distributing, or disclosing any part of the website in
-          any medium, including without limitation by any automated or
-          non-automated “scraping”;
-        </p>
-        {/* Add more terms and conditions content here */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="text-3xl font-semibold text-center mb-8">
+          Terms of Service
+        </h1>
+        <div className="prose lg:prose-xl">
+          <h2 className="font-bold mb-3">1. Introduction</h2>
+          <p className="mb-4">
+            Welcome to Vogue Vault. These are the terms and conditions governing
+            your access to and use of the website Vogue Vault and its related
+            sub-domains, sites, services and tools.
+          </p>
+
+          <h2 className="font-bold mb-3">2. Membership Eligibility</h2>
+          <p className="mb-4">
+            Use of the Vogue Vault website is available only to persons who can
+            form legally binding contracts under applicable law.
+          </p>
+
+          <h2 className="font-bold mb-3">
+            3. Your Account and Registration Obligations
+          </h2>
+          <p className="mb-4">
+            If you use Vogue Vault, you are responsible for maintaining the
+            confidentiality of your account and password and for restricting
+            access to your computer, and you agree to accept responsibility for
+            all activities that occur under your account or password.
+          </p>
+
+          {/* Add more sections as needed */}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Terms;
+export default TosPage;
