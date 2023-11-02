@@ -9,7 +9,15 @@ const Cart = () => {
 
   const handleQuantityChange = (id, event) => {
     const newQuantity = parseInt(event.target.value, 10);
-    setCart(cart.map(item => item.id === id ? { ...item, quantity: newQuantity } : item));
+    setCart(
+      cart.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
+
+  const handleRemove = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
   };
 
   const handleBuyNow = () => {
@@ -62,6 +70,12 @@ const Cart = () => {
                   onChange={(event) => handleQuantityChange(item.id, event)}
                 />
               </div>
+              <button
+                className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
+                onClick={() => handleRemove(item.id)}
+              >
+                Remove
+              </button>
             </div>
           ))}
         </div>
