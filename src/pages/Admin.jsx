@@ -12,7 +12,7 @@ const Admin = () => {
     addProduct,
     database,
   } = useContext(Context);
-
+  const [alertMessage, setAlertMessage] = useState("");
   console.log(bannedUsers);
   const navigate = useNavigate();
   useEffect(() => {
@@ -40,7 +40,7 @@ const Admin = () => {
 
   const handleAddProduct = () => {
     // Validate new product data here if necessary
-
+    setAlertMessage("Product Added");
     // Call addProduct function from context to add the new product
     addProduct(newProduct);
 
@@ -70,7 +70,7 @@ const Admin = () => {
     <div>
       <Navbar />
       <div className="container mx-auto mt-8 p-4">
-        <h2 className="text-center text-2xl font-bold text-gray-900 mb-4">
+        <h2 className=" border bg-gray-600 text-white text-center text-2xl font-bold  mb-8">
           All Users
         </h2>
         <div className="flex flex-col items-center">
@@ -124,10 +124,11 @@ const Admin = () => {
             </tbody>
           </table>
         </div>
-        <h2 className="text-center text-2xl font-bold text-gray-900 mb-4">
+        <h2 className="mt-12 border bg-gray-600 text-white text-center text-2xl font-bold  mb-4">
           Add New Product
         </h2>
         <div className="max-w-md mx-auto">
+          <div className="text-center text-blue-500">{alertMessage}</div>
           <form>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">

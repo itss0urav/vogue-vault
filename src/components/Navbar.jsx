@@ -1,29 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { GrUserAdmin } from "react-icons/gr";
 import { GiSelfLove } from "react-icons/gi";
 import { BiUserCircle } from "react-icons/bi";
 import { BsCartCheck } from "react-icons/bs";
+import { AiOutlineMenu } from "react-icons/ai";
 import Context from "../context/Context";
+import logo from "../assets/VV.png";
 
 const Navbar = () => {
   const { allUsers, username, isLoggedIn, setIsLoggedIn, database } =
     useContext(Context);
-
-  useEffect(() => {}, [isLoggedIn, username]);
-  let updatedName = "username"; // default value
-  if (Array.isArray(allUsers) && allUsers.length > 0 && allUsers[0].userName) {
-    updatedName = allUsers[0].userName;
-  }
-  console.log("updated", updatedName);
-  const handleLoginToggle = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
-  const [searchInp, searchInpNew] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchInp, setSearchInp] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  console.log(searchInp);
 
   const handleSearch = () => {
     const newfilteredData = database.filter((data) => {
@@ -31,96 +23,126 @@ const Navbar = () => {
     });
     setFilteredData(newfilteredData);
   };
-  console.log(filteredData);
+
+  const handleLoginToggle = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
+
+  const updatedName =
+    Array.isArray(allUsers) && allUsers.length > 0 && allUsers[0].userName
+      ? allUsers[0].userName
+      : "username";
 
   return (
     <div>
-      <div className="bg-black flex justify-between text-gray-100 p-4">
-        <div className="flex text-2xl font-bold text-left">
-          <Link to="/">Vogue Vault</Link>
-          <div className="flex ml-12 items-center">
+      <div className="bg-black text-white flex justify-between items-center p-4">
+        <div className="flex text-2xl font-bold text-left items-center">
+          <Link to="/">
+            <img className="w-8 rounded-md" src={logo} alt="Vogue Vault" />
+          </Link>
+          <div className="flex ml-2 items-center">
             <input
               value={searchInp}
-              onChange={(e) => searchInpNew(e.target.value)}
-              type=" text"
-              className="text-center text-black rounded-md "
+              onChange={(e) => setSearchInp(e.target.value)}
+              type="text"
+              className="text-center text-black rounded-md"
             />
-            <BsSearch onClick={handleSearch} className="ml-3" />
+            <BsSearch onClick={handleSearch} className="ml-2 cursor-pointer" />
           </div>
         </div>
-        <ul className="flex gap-5">
-          <li className=" hover:text-gray-400">
-            <Link to="/Cart" className="flex items-center text-lg font-medium">
-              Cart <BsCartCheck className="m-1" />
-            </Link>
-          </li>
-          <li className="hover:text-gray-400">
-            <Link
-              to="/Wishlist"
-              className="flex items-center text-lg font-medium"
-            >
-              Wishlist <GiSelfLove className="m-1" />
-            </Link>
-          </li>
-          <li className="hover:text-gray-400">
-            <Link to="/Services" className="text-lg font-medium">
-              Services
-            </Link>
-          </li>
-          <li className="hover:text-gray-400">
-            <Link to="/Help" className="text-lg font-medium">
-              Help
-            </Link>
-          </li>
-          <li className="hover:text-gray-400">
-            <Link to="/Terms" className="text-lg font-medium">
-              Terms
-            </Link>
-          </li>
-          <li className="text-2xl hover:text-gray-400 mt-1">
+        <div className="flex items-center gap-4">
+          <div className=" sm:flex gap-5 items-center">
             <Link to="/admin">
-              <GrUserAdmin className="bg-white rounded-md p-1 " />
+              <GrUserAdmin className="text-2xl bg-white rounded-md p-1" />
             </Link>
-          </li>
-          <Link to="/UserProfile">
-            <div className="flex gap-1">
-              <BiUserCircle className=" text-2xl mt-0.5" />
-              <li className="text-cyan-300 text-lg font-medium">
-                {updatedName}
-              </li>
-            </div>
-          </Link>
-          <li className="text-3xl">
-            <p onClick={handleLoginToggle}>
+            <Link
+              to="/UserProfile"
+              className="flex items-center text-cyan-300 text-lg font-medium"
+            >
+              <BiUserCircle className="text-2xl mt-0.5" />
+              {updatedName}
+            </Link>
+            <p onClick={handleLoginToggle} className="text-3xl cursor-pointer">
               {isLoggedIn ? (
-                <Link>
-                  <BiLogOutCircle />
-                </Link>
+                <BiLogOutCircle />
               ) : (
                 <Link to="/Login">
                   <BiLogInCircle />
                 </Link>
               )}
             </p>
-          </li>
-        </ul>
+          </div>
+          <div className="">
+            <div
+              className="cursor-pointer"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <AiOutlineMenu className="text-2xl" />
+            </div>
+            {menuOpen && (
+              <div className="absolute top-16 right-4 bg-black z-10 p-4 rounded shadow">
+                <Link
+                  to="/Cart"
+                  className="block mb-2 hover:text-white hover:bg-gray-700 hover:rounded p-1 text-center"
+                >
+                  Cart <BsCartCheck className="inline-block ml-1 " />
+                </Link>
+                <Link
+                  to="/Wishlist"
+                  className="block mb-2 hover:text-white hover:bg-gray-700 hover:rounded p-1 text-center"
+                >
+                  Wishlist <GiSelfLove className="inline-block ml-1" />
+                </Link>
+                <Link
+                  to="/Services"
+                  className="block mb-2 hover:text-white hover:bg-gray-700 hover:rounded p-1 text-center"
+                >
+                  Services
+                </Link>
+                <Link
+                  to="/Help"
+                  className="block mb-2 hover:text-white hover:bg-gray-700 hover:rounded p-1 text-center"
+                >
+                  Help
+                </Link>
+                <Link
+                  to="/Terms"
+                  className="block mb-2 hover:text-white hover:bg-gray-700 hover:rounded p-1 text-center"
+                >
+                  Terms
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      <div className="">
-      {filteredData.map((item) => (
-  <div key={item.id} className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
-    <div className="md:flex">
-      <div className="md:flex-shrink-0">
-        <img className="h-48 w-full object-cover md:w-48" src={item.imageUrl} alt={item.name} />
-      </div>
-      <div className="p-8">
-        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{item.name}</div>
-        <p className="block mt-1 text-lg leading-tight font-medium text-black">{item.price}</p>
-        <p className="mt-2 text-gray-500">{item.description}</p>
-      </div>
-    </div>
-  </div>
-))}
 
+      <div className="flex flex-wrap justify-center p-4">
+        {filteredData.map((item) => (
+          <div
+            key={item.id}
+            className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3"
+          >
+            <div className="md:flex">
+              <div className="md:flex-shrink-0">
+                <img
+                  className="h-48 w-full object-cover md:w-48"
+                  src={item.imageUrl}
+                  alt={item.name}
+                />
+              </div>
+              <div className="p-8">
+                <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                  {item.name}
+                </div>
+                <p className="block mt-1 text-lg leading-tight font-medium text-black">
+                  {item.price}
+                </p>
+                <p className="mt-2 text-gray-500">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
