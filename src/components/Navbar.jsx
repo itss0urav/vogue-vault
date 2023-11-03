@@ -37,8 +37,9 @@ const Navbar = () => {
     <div>
       <div className="bg-black text-white flex justify-between items-center p-4">
         <div className="flex text-2xl font-bold text-left items-center">
-          <Link to="/">
-            <img className="w-8 rounded-md" src={logo} alt="Vogue Vault" />
+          <Link className="flex gap-1" to="/">
+            <img className="w-8  rounded-sm" src={logo} alt="Vogue Vault" />
+            <p className="hidden md:flex">Vogue Voult</p>
           </Link>
           <div className="flex ml-2 items-center">
             <input

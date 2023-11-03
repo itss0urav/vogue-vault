@@ -1,10 +1,9 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
 const BuyPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [boughtUsers, setBoughtUsers] = useState(0);
-
 
   useEffect(() => {
     const users = parseInt(Math.random() * 10000);
@@ -41,12 +40,15 @@ const BuyPage = ({ product }) => {
       <div className="flex flex-col items-center mb-8">
         <h2 className="text-3xl font-semibold mb-4">{product.name}</h2>
         <img
-          className="w-1/2 object-cover mb-4"
+          className="h-1/4 object-cover mb-4"
           src={product.imageUrl}
           alt={product.name}
         />
         <p className="text-gray-600 mb-4">{product.description}</p>
       </div>
+        <p className="mb-2 text-sm text-cyan-700 font-bold ">
+          {boughtUsers} users bought this product
+        </p>
       <div className="mb-4 flex items-center">
         <label className="mr-2 text-sm font-medium text-gray-600">
           Quantity:
@@ -59,9 +61,7 @@ const BuyPage = ({ product }) => {
           onChange={handleQuantityChange}
         />
       </div>
-      <p className="mb-1 text-sm text-cyan-700 font-bold ">
-        {boughtUsers} users bought this product
-      </p>
+
       <h3 className="text-lg font-semibold mb-2">
         Total Price: ₹{totalPrice.toFixed(2)}
       </h3>
