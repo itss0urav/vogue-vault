@@ -46,7 +46,7 @@ const Navbar = () => {
               value={searchInp}
               onChange={(e) => setSearchInp(e.target.value)}
               type="text"
-              className="w-20 sm:w-30 text-sm h-8 text-center text-black rounded-sm"
+              className="w-20 sm:w-60 text-sm h-8 text-center text-black rounded-sm"
               placeholder="Search here"
             />
             <BsSearch onClick={handleSearch} className="ml-2 cursor-pointer" />

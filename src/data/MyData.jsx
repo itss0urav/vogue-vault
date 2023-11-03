@@ -159,4 +159,84 @@ export const mensProducts = [
     description:
       "Unleash your sporty spirit with Adidas Men Hoodies. Crafted from premium material, these hoodies provide warmth and style. The iconic Adidas logo adds a touch of authenticity, making these hoodies a must-have for sports enthusiasts and fashion-forward individuals alike.",
   },
+  {
+    id: 17,
+    name: "RACIOUSE Cotton Men Full Sleeves top Trending Pocket Avenger Printed with Hooded Sweatshirt Hoodie",
+    category: "hoodie",
+    imageUrl: "https://m.media-amazon.com/images/I/61g7Ub+fzAL._SY550_.jpg",
+    price: 449,
+    quantity: 1,
+    description:
+      "Crafted from premium material, these hoodies provide warmth and style. The iconic  logo adds a touch of authenticity, making these hoodies a must-have for sports enthusiasts and fashion-forward individuals alike.",
+  },
+  {
+    id: 18,
+    name: "HIT SQUARE Fleece Batman Design Full Sleeves Hooded Sweatshirt for Men",
+    category: "hoodie",
+    imageUrl: "https://m.media-amazon.com/images/I/61OjzrLTH+L._SX466_.jpg",
+    price: 550,
+    quantity: 1,
+    description:
+      "Crafted from premium material, these hoodies provide warmth and style. The iconic  logo adds a touch of authenticity, making these hoodies a must-have for sports enthusiasts and fashion-forward individuals alike.",
+  },
+  {
+    id: 19,
+    name: "F GALLERY Men's Printed Fleece Hooded Sweatshirt",
+    category: "hoodie",
+    imageUrl: "https://m.media-amazon.com/images/I/51wdIgwZefL._SX425_.jpg",
+    price: 449,
+    quantity: 1,
+    description:
+      "Crafted from premium material, these hoodies provide warmth and style. The iconic  logo adds a touch of authenticity, making these hoodies a must-have for sports enthusiasts and fashion-forward individuals alike.",
+  },
+  {
+    id: 20,
+    name: "TOMMY HILFIGER Evan Chronograph Men's Watch - NCTH1710393 (Blue Dial Brown Colored Strap)",
+    category: "watch",
+    imageUrl: "https://m.media-amazon.com/images/I/61at4URvqLL._SX342_.jpg",
+    price: 10125,
+    quantity: 1,
+    description:
+      "This elegant timepiece from Tommy Hilfiger features a stunning blue dial complemented by a classy brown strap. The chronograph functionality adds a sporty touch to this sophisticated watch, making it perfect for both casual and formal occasions.",
+  },
+  {
+    id: 21,
+    name: "Fossil Analog White Dial Men's Watch-FS4795",
+    category: "watch",
+    imageUrl: "https://m.media-amazon.com/images/I/81q-86EVPBL._SX342_.jpg",
+    price: 14495,
+    quantity: 1,
+    description:
+      "This Fossil men’s watch showcases a timeless design with its analog white dial. The watch is a testament to Fossil’s commitment to quality and style, making it a must-have accessory for the modern man.",
+  },
+  {
+    id: 22,
+    name: "Casio G-Shock Analog-Digital Gold Dial Men GM-110G-1A9DR ( G1053 )",
+    category: "watch",
+    imageUrl: "https://m.media-amazon.com/images/I/71SMZf19kVL._SX342_.jpg",
+    price: 17095,
+    quantity: 1,
+    description:
+      "This Casio G-Shock watch features a striking gold dial and offers both analog and digital displays. Known for their durability and shock resistance, G-Shock watches are perfect for those with an active lifestyle.",
+  },
+  {
+    id: 23,
+    name: "FORSINING Analogue Men's Watch(Gold Dial Silver Colored Strap)-S1089-2",
+    category: "watch",
+    imageUrl: "https://m.media-amazon.com/images/I/71SMZf19kVL._SX342_.jpg",
+    price: 5727,
+    quantity: 1,
+    description:
+      "This Forsining watch features a beautiful gold dial paired with a silver strap. Its analog display and sleek design make it a stylish choice for any occasion. ",
+  },
+  {
+    id: 24,
+    name: "ASIAN Men's FUTURE-01 Sports Running,Walking & Gym Shoes with Eva Sole Extra Jump Casual Sneaker Shoes for Men's & Boy's",
+    category: "shoes",
+    imageUrl: "https://m.media-amazon.com/images/I/818n0mH4aeL._SY500_.jpg",
+    price: 599,
+    quantity: 1,
+    description:
+      "These sports shoes from ASIAN are designed for comfort and performance. Ideal for running, walking, and gym workouts, they feature an EVA sole for extra jump and are a great addition to any active wear collection.",
+  },
 ];
