@@ -207,7 +207,7 @@ export const mensProducts = [
     price: 14495,
     quantity: 1,
     description:
-      "This Fossil men’s watch showcases a timeless design with its analog white dial. The watch is a testament to Fossil’s commitment to quality and style, making it a must-have accessory for the modern man.",
+      "This Fossil men's watch showcases a timeless design with its analog white dial. The watch is a testament to Fossil's commitment to quality and style, making it a must-have accessory for the modern man.",
   },
   {
     id: 22,
@@ -223,7 +223,7 @@ export const mensProducts = [
     id: 23,
     name: "FORSINING Analogue Men's Watch(Gold Dial Silver Colored Strap)-S1089-2",
     category: "watch",
-    imageUrl: "https://m.media-amazon.com/images/I/71SMZf19kVL._SX342_.jpg",
+    imageUrl: "https://m.media-amazon.com/images/I/91r3X2jxVRL._SX342_.jpg",
     price: 5727,
     quantity: 1,
     description:
@@ -239,4 +239,54 @@ export const mensProducts = [
     description:
       "These sports shoes from ASIAN are designed for comfort and performance. Ideal for running, walking, and gym workouts, they feature an EVA sole for extra jump and are a great addition to any active wear collection.",
   },
+  //   {
+  //     id: 25,
+  //     name: "Levi's Men's Solid Regular Fit Casual Shirt",
+  //     category: "shirts",
+  //     imageUrl: "https://m.media-amazon.com/images/I/81q-86EVPBL.SX342.jpg",
+  //     price: 1999,
+  //     quantity: 1,
+  //     description:
+  //       "This Levi's casual shirt for men is a wardrobe staple. With its solid color and regular fit, it's perfect for any casual occasion.",
+  //   },
+  //   {
+  //     id: 26,
+  //     name: "Peter England Men's Solid Slim Fit Formal Shirt",
+  //     category: "shirts",
+  //     imageUrl: "https://m.media-amazon.com/images/I/61at4URvqLL.SX342.jpg",
+  //     price: 1299,
+  //     quantity: 1,
+  //     description:
+  //       "This Peter England formal shirt features a slim fit and solid color, making it a stylish choice for any formal event.",
+  //   },
+  //   {
+  //     id: 27,
+  //     name: "United Colors of Benetton Men's Checkered Regular Fit Casual Shirt",
+  //     category: "shirts",
+  //     imageUrl: "https://m.media-amazon.com/images/I/71SMZf19kVL.SX342.jpg",
+  //     price: 1599,
+  //     quantity: 1,
+  //     description:
+  //       "This checkered shirt from United Colors of Benetton offers a regular fit and a casual style, perfect for a relaxed weekend look.",
+  //   },
+  //   {
+  //     id: 28,
+  //     name: "Van Heusen Men's Solid Regular Fit Formal Shirt",
+  //     category: "shirts",
+  //     imageUrl: "https://m.media-amazon.com/images/I/71SMZf19kVL.SX342.jpg",
+  //     price: 1499,
+  //     quantity: 1,
+  //     description:
+  //       "This Van Heusen formal shirt features a regular fit and solid color, making it a versatile addition to any professional wardrobe.",
+  //   },
+  //   {
+  //     id: 29,
+  //     name: "Allen Solly Men's Printed Regular Fit Casual Shirt",
+  //     category: "shirts",
+  //     imageUrl: "https://m.media-amazon.com/images/I/818n0mH4aeL.SY500.jpg",
+  //     price: 1799,
+  //     quantity: 1,
+  //     description:
+  //       "This Allen Solly casual shirt features a unique print and a regular fit, making it a standout choice for any casual occasion.",
+  //   },
 ];
