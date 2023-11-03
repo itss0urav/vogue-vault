@@ -45,7 +45,8 @@ const Navbar = () => {
               value={searchInp}
               onChange={(e) => setSearchInp(e.target.value)}
               type="text"
-              className="text-center text-black rounded-md"
+              className="w-30 text-center text-black rounded-md"
+              placeholder="Search here"
             />
             <BsSearch onClick={handleSearch} className="ml-2 cursor-pointer" />
           </div>
@@ -53,11 +54,11 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <div className=" sm:flex gap-5 items-center">
             <Link to="/admin">
-              <GrUserAdmin className="text-2xl bg-white rounded-md p-1" />
+              <GrUserAdmin className="hidden md:flex text-2xl bg-white rounded-md p-1" />
             </Link>
             <Link
               to="/UserProfile"
-              className="flex items-center text-cyan-300 text-lg font-medium"
+              className="hidden md:flex items-center text-cyan-300 text-lg font-medium"
             >
               <BiUserCircle className="text-2xl mt-0.5" />
               {updatedName}
@@ -80,7 +81,17 @@ const Navbar = () => {
               <AiOutlineMenu className="text-2xl" />
             </div>
             {menuOpen && (
-              <div className="absolute top-16 right-4 bg-black z-10 p-4 rounded shadow">
+              <div className="absolute flex flex-col items-center justify-center top-16 right-4 bg-black z-10 p-4 rounded shadow">
+                <Link to="/admin">
+                  <GrUserAdmin className="md:hidden flex text-2xl bg-white rounded-md p-1 mb-1" />
+                </Link>
+                <Link
+                  to="/UserProfile"
+                  className="mb-1 md:hidden flex items-center text-cyan-300 text-lg font-medium"
+                >
+                  <BiUserCircle className="text-2xl mt-0.5" />
+                  {updatedName}
+                </Link>
                 <Link
                   to="/Cart"
                   className="block mb-2 hover:text-white hover:bg-gray-700 hover:rounded p-1 text-center"
@@ -117,7 +128,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center p-4">
+      <div className="flex flex-wrap justify-center p-1">
         {filteredData.map((item) => (
           <div
             key={item.id}
