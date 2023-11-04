@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Context from "../context/Context";
 import BuyPage from "../pages/BuyPage";
 import Category from "./Category";
@@ -16,8 +16,8 @@ const Body = () => {
   } = useContext(Context);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const filtered = new Set(database.map((data) => data.category));
-  const filteredArray = [...filtered];
+  // const filtered = new Set(database.map((data) => data.category));
+  // const filteredArray = [...filtered];
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
