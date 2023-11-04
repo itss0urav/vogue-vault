@@ -16,9 +16,9 @@ const SignUp = () => {
     setPassword,
     confirmPassword,
     setConfirmPassword,
-    isLoggedIn,
+    // isLoggedIn,
     setIsLoggedIn,
-    allUsers,
+    // allUsers,
     setAllUsers,
   } = useContext(Context);
 
