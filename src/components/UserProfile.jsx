@@ -18,8 +18,8 @@ const UserProfile = () => {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  
-   //
+
+   // manages input values
 
   const handleInputChange = (e) => {
     setError(null); // Clear any previous errors
@@ -38,6 +38,8 @@ const UserProfile = () => {
         break;
     }
   };
+
+  // for handling profile updation
 
   const handleUpdateProfile = () => {
     // Validate input

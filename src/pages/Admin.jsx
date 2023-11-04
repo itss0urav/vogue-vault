@@ -10,7 +10,7 @@ const Admin = () => {
     bannedUsers,
     setBannedUsers,
     addProduct,
-    database,
+    // database,
   } = useContext(Context);
   const [alertMessage, setAlertMessage] = useState("");
   console.log(bannedUsers);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
@@ -11,8 +11,13 @@ import Context from "../context/Context";
 import logo from "../assets/VV.png";
 
 const Navbar = () => {
-  const { allUsers, username, isLoggedIn, setIsLoggedIn, database } =
-    useContext(Context);
+  const {
+    allUsers,
+    // username,
+    isLoggedIn,
+    setIsLoggedIn,
+    database,
+  } = useContext(Context);
 
   // temp states
 
