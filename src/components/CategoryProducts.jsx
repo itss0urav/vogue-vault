@@ -6,15 +6,26 @@ import Category from "./Category";
 
 const CategoryProducts = () => {
   const { database, setCart, setCartText, cartText } = useContext(Context);
-  const navigate = useNavigate(); // useNavigate returns the navigate function directly
+
+  const navigate = useNavigate();
+
+  // filtering category products
+
   const MyLocation = useLocation().pathname.split("/")[1];
+
   const productsFiltered = database.filter(
     (data) => data.category === MyLocation
   );
 
+
+  // to handle buy
+
   const handleProductClick = (product) => {
     navigate(`/buy/${product.id}`);
   };
+
+  // for cart manangement
+  
   const addToCart = (event, product) => {
     event.stopPropagation();
     setCart((currentCart) => [...currentCart, product]);

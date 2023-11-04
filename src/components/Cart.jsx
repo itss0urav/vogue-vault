@@ -1,11 +1,14 @@
-import React, { useContext, useState } from "react";
-import Navbar from "./Navbar";
-import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import Context from "../context/Context";
+import Navbar from "./Navbar";
 
 const Cart = () => {
-  const nav = useNavigate();
   const { cart, setCart } = useContext(Context);
+
+  const nav = useNavigate();
+
+  // to handle quantity
 
   const handleQuantityChange = (id, event) => {
     const newQuantity = parseInt(event.target.value, 10);
@@ -16,15 +19,20 @@ const Cart = () => {
     );
   };
 
+  // to remove from cart
+
   const handleRemove = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
+
+  //  to handle buy
 
   const handleBuyNow = () => {
     nav("/Payment", { state: { totalPrice } });
   };
 
   // Calculate total price
+
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0

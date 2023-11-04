@@ -13,9 +13,14 @@ import logo from "../assets/VV.png";
 const Navbar = () => {
   const { allUsers, username, isLoggedIn, setIsLoggedIn, database } =
     useContext(Context);
+
+  // temp states
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchInp, setSearchInp] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+
+  // to handle search
 
   const handleSearch = () => {
     const newfilteredData = database.filter((data) => {
@@ -24,9 +29,13 @@ const Navbar = () => {
     setFilteredData(newfilteredData);
   };
 
+  // to toogle login and logout
+
   const handleLoginToggle = () => {
     setIsLoggedIn(!isLoggedIn);
   };
+
+  // to show updated name
 
   const updatedName =
     Array.isArray(allUsers) && allUsers.length > 0 && allUsers[0].userName

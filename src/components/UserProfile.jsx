@@ -13,9 +13,13 @@ const UserProfile = () => {
    const [password, setPassword] = useState(allUsers && allUsers[0] ? allUsers[0].userPassword : "");
    const [error, setError] = useState(null);
  
+   // set password hidden as default for privacy
+
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+  
+   //
 
   const handleInputChange = (e) => {
     setError(null); // Clear any previous errors

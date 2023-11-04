@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 const Category = () => {
   const { database } = useContext(Context);
+
+  // filtering category
+  
   const filtered = new Set(database.map((data) => data.category));
   const filteredArray = [...filtered];
 
