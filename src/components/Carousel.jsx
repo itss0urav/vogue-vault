@@ -19,15 +19,17 @@ const Carousel = () => {
   }, [database]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="w-full max-w-screen-md overflow-hidden rounded-lg shadow-lg animate-fade-in-down">
-        <img
-          className="w-full h-64 object-cover"
-          src={database[activeIndex].imageUrl}
-          alt={database[activeIndex].name}
-        />
+    <div className=" h-full ">
+      <div className=" w-full max-w-screen-md overflow-hidden rounded-lg  animate-fade-in-down">
+        <div className="flex justify-center">
+          <img
+            className="h-24 w-auto object-cover"
+            src={database[activeIndex].imageUrl}
+            alt={database[activeIndex].name}
+          />
+        </div>
         <div className="px-6 py-4">
-          <h2 className="text-xl text-center font-semibold text-gray-800">
+          <h2 className="text-sm text-center font-semibold text-gray-800">
             {database[activeIndex].name}
           </h2>
           {/* <p className="mt-2 text-sm text-gray-600">
