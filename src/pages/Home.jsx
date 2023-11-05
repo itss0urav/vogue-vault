@@ -18,8 +18,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* <Carousel/> */}
-      <Carousel2/>
+      <div className="flex justify-between">
+        <Carousel2 />
+        <Carousel />
+      </div>
       <Body />
     </div>
   );

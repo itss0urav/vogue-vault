@@ -7,18 +7,23 @@ import image4 from "../assets/4.png";
 const Carousel2 = () => {
   const images = [image1, image2, image3, image4];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex((currentImageIndex + 1) % images.length);
-    }, 3000);
+      setIsFading(true);
+      setTimeout(() => {
+        setCurrentImageIndex((currentImageIndex + 1) % images.length);
+        setIsFading(false);
+      }, 1000);
+    }, 4000);
     return () => clearInterval(timer);
   }, [currentImageIndex]);
 
   return (
-    <div className="flex justify-center items-center ">
+    <div className="flex bg-black justify-center items-center ">
       <img
-        className="w-3/4 rounded-sm  object-cover"
+        className={`w-2/4 rounded-sm object-cover transition-opacity duration-1000 ${isFading ? 'opacity-0' : 'opacity-100'}`}
         src={images[currentImageIndex]}
         alt="carousel"
       />
