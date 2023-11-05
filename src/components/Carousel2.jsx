@@ -14,7 +14,7 @@ const Carousel2 = () => {
     const timer = setInterval(() => {
       setIsFading(true);
       setTimeout(() => {
-        setCurrentImageIndex((currentImageIndex + 1) % images.length);
+        setCurrentImageIndex((currentImageIndex + 1) % 4);
         setIsFading(false);
       }, 1000);
     }, 4000);
