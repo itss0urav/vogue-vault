@@ -22,9 +22,9 @@ const Carousel2 = () => {
   }, [currentImageIndex]);
 
   return (
-    <div className="flex justify-center bg-gray-300 items-center p-4 ">
+    <div className="flex justify-center items-center  ">
       <img
-        className={`w-2/4 rounded-sm object-cover transition-opacity duration-1000 ${
+        className={`w-3/4 rounded-sm object-cover transition-opacity duration-1000 ${
           isFading ? "opacity-0" : "opacity-100"
         }`}
         src={images[currentImageIndex]}

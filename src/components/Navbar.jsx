@@ -143,7 +143,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center p-1">
+      <div className="flex flex-wrap justify-center ">
         {filteredData.map((item) => (
           <div
             key={item.id}
@@ -162,7 +162,7 @@ const Navbar = () => {
                   {item.name}
                 </div>
                 <p className="block mt-1 text-lg leading-tight font-medium text-black">
-                  {item.price}
+                ₹{item.price}
                 </p>
                 <p className="mt-2 text-gray-500">{item.description}</p>
               </div>
