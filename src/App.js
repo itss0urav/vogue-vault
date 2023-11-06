@@ -23,13 +23,13 @@ function App() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [allUsers, setAllUsers] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [database, setDatabase] = useState(mensProducts);
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [cart, setCart] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
   const [cartText, setCartText] = useState({});
+  const [wishlist, setWishlist] = useState([]);
   const [wishlistText, setWishlistText] = useState({});
   const [bannedUsers, setBannedUsers] = useState([]);
   const addProduct = (newProduct) => {
@@ -73,6 +73,7 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={dataExpanded}>
           <Routes>
+            <Route path="/buy/:productId" element={<BuyPageFromFiltered />} />
             <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
             <Route path="/UserProfile" element={<UserProfile />} />
             <Route path="/services" element={<Services />} />
@@ -86,7 +87,6 @@ function App() {
             <Route path="/help" element={<Help />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/" element={<Home />} />
-            <Route path="/buy/:productId" element={<BuyPageFromFiltered />} />
 
             {/* products filtered page */}
             {filteredArray.map((product) => (
