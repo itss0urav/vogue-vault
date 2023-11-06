@@ -7,7 +7,7 @@ const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  const { allUsers, setIsLoggedIn ,bannedUsers } = useContext(Context);
+  const { allUsers, setIsLoggedIn, bannedUsers } = useContext(Context);
 
   const handleLogin = () => {
     const user = allUsers.find(

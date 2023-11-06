@@ -16,7 +16,7 @@ const Category = () => {
         {filteredArray.map((data, index) => (
           <Link
             to={`/${data}`}
-            className="px-2 py-1 rounded-md hover:bg-gray-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 no-underline text-white hover:text-cyan-200"
+            className="px-2 py-1 rounded-md hover:bg-gray-800 transition duration-500 ease-in-out transform  hover:scale-105 no-underline text-white "
           >
             {data}
           </Link>
