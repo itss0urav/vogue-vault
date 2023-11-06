@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const BuyPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [boughtUsers, setBoughtUsers] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(""); // Initialize with an empty string
 
   useEffect(() => {
     const users = parseInt(Math.random() * 10000);
@@ -37,7 +38,9 @@ const BuyPage = ({ product }) => {
   // console.log(boughtUsers);
   return (
     <div className="container mx-auto p-4 sm:p-2">
-      <h2 className="text-2xl sm:text-3xl font-semibold mb-4">{product.name}</h2>
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-4">
+        {product.name}
+      </h2>
       <div className="flex flex-col sm:flex-row justify-center mb-8">
         <img
           className="h-1/4 object-cover mb-4 sm:mb-0 sm:mr-4"
@@ -45,7 +48,9 @@ const BuyPage = ({ product }) => {
           alt={product.name}
         />
         <div className="">
-          <p className="text-gray-600 mb-4 w-auto text-sm sm:text-base">{product.description}</p>
+          <p className="text-gray-600 mb-4 w-auto text-sm sm:text-base">
+            {product.description}
+          </p>
           <p className="mb-2 text-xs sm:text-sm text-cyan-700 font-bold ">
             {boughtUsers} users bought this product
           </p>
@@ -60,6 +65,22 @@ const BuyPage = ({ product }) => {
               value={quantity}
               onChange={handleQuantityChange}
             />
+          </div>
+          <div className="mb-4 flex items-center">
+            <label className="mr-2 text-xs sm:text-sm font-medium text-gray-600">
+              Size:
+            </label>
+            <select
+              value={selectedSize}
+              onChange={(event) => setSelectedSize(event.target.value)}
+              className="w-24 h-8 sm:h-10 border rounded px-3"
+            >
+              <option value="">Select Size</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
           </div>
 
           <h3 className="text-base sm:text-lg font-semibold mb-2">

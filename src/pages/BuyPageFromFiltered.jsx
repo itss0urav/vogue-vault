@@ -6,6 +6,8 @@ import Navbar from "../components/Navbar";
 const BuyPageFromFiltered = () => {
   const [quantity, setQuantity] = useState(1);
   const [boughtUsers, setBoughtUsers] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(""); // Initialize with an empty string
+
   const nav = useNavigate();
   const { database } = useContext(Context);
 
@@ -57,6 +59,23 @@ const BuyPageFromFiltered = () => {
                 onChange={handleQuantityChange}
               />
             </div>
+            <div className="mb-4 flex items-center">
+  <label className="mr-2 text-xs sm:text-sm font-medium text-gray-600">
+    Size:
+  </label>
+  <select
+    value={selectedSize}
+    onChange={(event) => setSelectedSize(event.target.value)}
+    className="w-24 h-8 sm:h-10 border rounded px-3"
+  >
+    <option value="">Select Size</option>
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+  </select>
+</div>
+
             <p className="mb-1 text-sm text-cyan-700 font-bold ">
               {boughtUsers} users bought this product
             </p>
