@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import Context from "../context/Context";
 const BuyPage = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [boughtUsers, setBoughtUsers] = useState(0);

@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import React, { useContext } from "react";
 import Context from "../context/Context";
-import Navbar from "./Navbar";
 import Category from "./Category";
+import Navbar from "./Navbar";
 
 const CategoryProducts = () => {
   const { database, setCart, setCartText, cartText } = useContext(Context);

@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react";
-import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
-import Context from "../context/Context";
-import Body from "../components/Body";
 // import Carousel from "../components/Carousel";
 import Carousel2 from "../components/Carousel2";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Context from "../context/Context";
+import Body from "../components/Body";
 
 const Home = () => {
   const { isLoggedIn, bannedUsers } = useContext(Context);

@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import Navbar from "./Navbar";
-import Context from "../context/Context";
 import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import Context from "../context/Context";
+import Navbar from "./Navbar";
 
 const Wishlist = () => {
   const nav = useNavigate();

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar";
 import { useNavigate, useLocation } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import React, { useState } from "react";
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");

@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BuyPageFromFiltered from "./pages/BuyPageFromFiltered";
+import CategoryProducts from "./components/CategoryProducts";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import UserProfile from "./components/UserProfile";
 import { mensProducts } from "./data/MyData";
-import CategoryProducts from "./components/CategoryProducts";
 import Wishlist from "./components/Wishlist";
 import UserContext from "./context/Context";
 import AdminLogin from "./pages/AdminLogin";
@@ -17,7 +18,6 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
 import "./App.css";
-import BuyPageFromFiltered from "./pages/BuyPageFromFiltered";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -67,7 +67,7 @@ function App() {
 
   const filtered = new Set(database.map((data) => data.category));
   const filteredArray = [...filtered];
-  
+
   return (
     <div className="App">
       <BrowserRouter>

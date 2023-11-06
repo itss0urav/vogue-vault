@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Context from "../context/Context";
 import Navbar from "../components/Navbar";
+import Context from "../context/Context";
 
 const Admin = () => {
   const {

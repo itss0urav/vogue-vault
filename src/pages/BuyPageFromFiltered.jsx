@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import Context from "../context/Context";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Context from "../context/Context";
 
 const BuyPageFromFiltered = () => {
   const [quantity, setQuantity] = useState(1);
