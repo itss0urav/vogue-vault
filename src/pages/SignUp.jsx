@@ -1,12 +1,15 @@
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Context from "../context/Context";
-import React, { useContext, useState } from "react";
 import logo from "../assets/VV-Transparent.png";
 
 const SignUp = () => {
   const [alertMessage, setAlertMessage] = useState("");
-
   const nav = useNavigate();
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const usernameRegex = /^[a-zA-Z0-9]+$/;
+
   const {
     email,
     setEmail,
@@ -16,9 +19,7 @@ const SignUp = () => {
     setPassword,
     confirmPassword,
     setConfirmPassword,
-    // isLoggedIn,
     setIsLoggedIn,
-    // allUsers,
     setAllUsers,
   } = useContext(Context);
 
@@ -26,6 +27,12 @@ const SignUp = () => {
     // Check if all required fields are filled
     if (!email || !username || !password || !confirmPassword) {
       setAlertMessage("Please fill out all fields");
+      return;
+    }
+
+    // Check if the username contains only numbers and letters
+    if (!usernameRegex.test(username)) {
+      setAlertMessage("Username can only contain numbers and letters.");
       return;
     }
 
@@ -38,6 +45,12 @@ const SignUp = () => {
       // Navigate to /admin if admin credentials are provided
       setIsLoggedIn(true);
       nav("/admin");
+      return;
+    }
+
+    // Check if the email is valid
+    if (!emailRegex.test(email)) {
+      setAlertMessage("Invalid email address");
       return;
     }
 
