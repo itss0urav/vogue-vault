@@ -16,6 +16,9 @@ const Navbar = () => {
     isLoggedIn,
     setIsLoggedIn,
     database,
+    setCart,
+    setCartText,
+    cartText,
   } = useContext(Context);
 
   // temp states
@@ -46,6 +49,13 @@ const Navbar = () => {
       ? allUsers[0].userName
       : "username";
 
+  // for cart manangement
+
+  const addToCart = (event, item) => {
+    event.stopPropagation();
+    setCart((currentCart) => [...currentCart, item]);
+    setCartText({ ...cartText, [item.id]: "Added to Cart" });
+  };
   return (
     <div>
       <div className="bg-black text-white flex justify-between items-center p-4">
@@ -62,7 +72,7 @@ const Navbar = () => {
               className="w-20 sm:w-60 text-sm h-8 text-center text-black rounded-sm"
               placeholder="Search here"
             />
-            <BsSearch onClick={handleSearch} className="ml-2 cursor-pointer" />
+            <BsSearch onClick={handleSearch} className="ml-2 cursor-pointer hover:scale-95 hover:text-cyan-500" />
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -164,6 +174,15 @@ const Navbar = () => {
                   ₹{item.price}
                 </p>
                 <p className="mt-2 text-gray-500">{item.description}</p>
+
+                <div className="flex justify-center  gap-2 mt-2">
+                  <button
+                    onClick={(event) => addToCart(event, item)}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-4 rounded"
+                  >
+                    {cartText[item.id] || "Add to Cart"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

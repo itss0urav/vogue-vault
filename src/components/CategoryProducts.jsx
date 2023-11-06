@@ -17,7 +17,6 @@ const CategoryProducts = () => {
     (data) => data.category === MyLocation
   );
 
-
   // to handle buy
 
   const handleProductClick = (product) => {
@@ -25,7 +24,7 @@ const CategoryProducts = () => {
   };
 
   // for cart manangement
-  
+
   const addToCart = (event, product) => {
     event.stopPropagation();
     setCart((currentCart) => [...currentCart, product]);
