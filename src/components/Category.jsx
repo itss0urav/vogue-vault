@@ -12,7 +12,7 @@ const Category = () => {
 
   return (
     <div>
-      <div className="text-sm flex justify-center gap-3 md:text-xl text-white bg-gray-700  p-1 mb-4">
+      <div className="text-sm flex justify-center md:gap-3 md:text-xl text-white bg-gray-700  p-1 mb-4">
         {filteredArray.map((data, index) => (
           <Link
             to={`/${data}`}
