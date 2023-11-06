@@ -62,7 +62,7 @@ const Navbar = () => {
         <div className="flex text-2xl font-bold text-left items-center">
           <Link className="flex gap-1" to="/">
             <img className="w-8  rounded-sm" src={logo} alt="Vogue Vault" />
-            <p className="hidden md:flex">Vogue Voult</p>
+            <p className="hidden md:flex hover:text-cyan-400">Vogue Voult</p>
           </Link>
           <div className="flex ml-2 items-center">
             <input
@@ -81,7 +81,7 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <div className=" sm:flex gap-5 items-center">
             <Link to="/admin">
-              <GrUserAdmin className="hidden md:flex text-2xl bg-white rounded-md p-1" />
+              <GrUserAdmin className="hidden md:flex text-2xl bg-white hover:bg-gray-300 rounded-md p-1" />
             </Link>
             <Link
               to="/UserProfile"

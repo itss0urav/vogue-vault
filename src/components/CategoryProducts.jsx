@@ -40,7 +40,7 @@ const CategoryProducts = () => {
           <div className="flex justify-center m-4 text-3xl font-bold">
             Products from {MyLocation}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
             {productsFiltered.map((product) => (
               <div
                 key={product.id}
@@ -49,7 +49,7 @@ const CategoryProducts = () => {
               >
                 <h3 className="font-bold text-xl p-4">{product.name}</h3>
                 <img
-                  className="mb-4 object-cover"
+                  className="mb-4 object-cover p-2"
                   src={product.imageUrl}
                   alt={product.name}
                 />
