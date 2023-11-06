@@ -1,13 +1,12 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
-import { BsSearch } from "react-icons/bs";
+import { BsCartCheck, BsSearch } from "react-icons/bs";
+import React, { useState, useContext } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { BiUserCircle } from "react-icons/bi";
 import { GrUserAdmin } from "react-icons/gr";
 import { GiSelfLove } from "react-icons/gi";
-import { BiUserCircle } from "react-icons/bi";
-import { BsCartCheck } from "react-icons/bs";
-import { AiOutlineMenu } from "react-icons/ai";
 import Context from "../context/Context";
+import { Link } from "react-router-dom";
 import logo from "../assets/VV.png";
 
 const Navbar = () => {
