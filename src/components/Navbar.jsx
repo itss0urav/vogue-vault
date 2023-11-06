@@ -72,7 +72,10 @@ const Navbar = () => {
               className="w-20 sm:w-60 text-sm h-8 text-center text-black rounded-sm"
               placeholder="Search here"
             />
-            <BsSearch onClick={handleSearch} className="ml-2 cursor-pointer hover:scale-95 hover:text-cyan-500" />
+            <BsSearch
+              onClick={handleSearch}
+              className="ml-2 cursor-pointer hover:scale-95 hover:text-cyan-500"
+            />
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -82,17 +85,17 @@ const Navbar = () => {
             </Link>
             <Link
               to="/UserProfile"
-              className="hidden md:flex items-center text-cyan-300 text-lg font-medium"
+              className="hidden md:flex items-center text-cyan-300 hover:text-cyan-500 text-lg font-medium"
             >
-              <BiUserCircle className="text-2xl mt-0.5" />
+              <BiUserCircle className="text-2xl mt-0.5 hover:text-cyan-500" />
               {updatedName}
             </Link>
             <p onClick={handleLoginToggle} className="text-3xl cursor-pointer">
               {isLoggedIn ? (
-                <BiLogOutCircle />
+                <BiLogOutCircle className="hover:text-red-500" />
               ) : (
                 <Link to="/Login">
-                  <BiLogInCircle />
+                  <BiLogInCircle className="hover:text-cyan-500" />
                 </Link>
               )}
             </p>
@@ -102,7 +105,7 @@ const Navbar = () => {
               className="cursor-pointer"
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              <AiOutlineMenu className="text-2xl" />
+              <AiOutlineMenu className="text-2xl hover:text-cyan-500" />
             </div>
             {menuOpen && (
               <div className="absolute flex flex-col items-center justify-center top-16 right-4 bg-black z-10 p-4 rounded shadow">
