@@ -8,13 +8,17 @@ import Body from "../components/Body";
 
 const Home = () => {
   const { isLoggedIn, bannedUsers } = useContext(Context);
+  
   const navigate = useNavigate();
+
+  //navigate to login or signup if user not logged in
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/login") || navigate("/signup");
     }
   }, [isLoggedIn, navigate]);
-  console.log("from home", bannedUsers);
+
+  // console.log("from home", bannedUsers);
   return (
     <div>
       <Navbar />

@@ -4,17 +4,22 @@ import logo from "../assets/VV-Transparent.png";
 import Context from "../context/Context";
 
 const Login = () => {
-  const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
   const { allUsers, setIsLoggedIn, bannedUsers } = useContext(Context);
 
+  const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  //to handle login
   const handleLogin = () => {
     const user = allUsers.find(
       (user) =>
         user.userEmail === loginInfo.email &&
         user.userPassword === loginInfo.password
     );
+    
+    //checks if user is banned
     if (user) {
       if (bannedUsers.includes(user.userEmail)) {
         setErrorMessage("Your account has been banned.");
