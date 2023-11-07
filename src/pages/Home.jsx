@@ -7,8 +7,11 @@ import Context from "../context/Context";
 import Body from "../components/Body";
 
 const Home = () => {
-  const { isLoggedIn, bannedUsers } = useContext(Context);
-  
+  const { 
+    isLoggedIn, 
+    // bannedUsers
+   } = useContext(Context);
+
   const navigate = useNavigate();
 
   //navigate to login or signup if user not logged in

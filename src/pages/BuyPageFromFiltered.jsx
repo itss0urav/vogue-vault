@@ -4,12 +4,13 @@ import Navbar from "../components/Navbar";
 import Context from "../context/Context";
 
 const BuyPageFromFiltered = () => {
+  const { database } = useContext(Context);
+
   const [quantity, setQuantity] = useState(1);
-  const [boughtUsers, setBoughtUsers] = useState(0);
+  const [boughtUsers, setBoughtUsers] = useState(0); // for storing random value of users that bought a product
   const [selectedSize, setSelectedSize] = useState(""); // Initialize with an empty string
 
   const nav = useNavigate();
-  const { database } = useContext(Context);
 
   const myLoc = parseInt(useLocation().pathname.split("/")[2]);
   console.log(myLoc);
@@ -25,8 +26,8 @@ const BuyPageFromFiltered = () => {
   };
 
   const product = database.find((data) => data.id === myLoc);
-  console.log("this the id", myLoc);
-  console.log("this the product", product);
+  // console.log("this the id", myLoc);
+  // console.log("this the product", product);
 
   const totalPrice = product.price * quantity;
 

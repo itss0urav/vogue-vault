@@ -4,8 +4,9 @@ import Context from "../context/Context";
 import Navbar from "./Navbar";
 
 const Wishlist = () => {
-  const nav = useNavigate();
   const { wishlist, setWishlist } = useContext(Context);
+
+  const nav = useNavigate();
 
   const handleQuantityChange = (id, event) => {
     const newQuantity = parseInt(event.target.value, 10);
@@ -15,14 +16,16 @@ const Wishlist = () => {
       )
     );
   };
+
+  //to pass the price
   const handleBuyNow = () => {
     nav("/Payment", { state: { totalPrice } });
   };
 
+  //to remove products
   const handleRemove = (id) => {
     setWishlist(wishlist.filter((data) => data.id !== id));
   };
-
 
   // Calculate total price
   const totalPrice = wishlist.reduce(
@@ -34,7 +37,7 @@ const Wishlist = () => {
     <div className="">
       <Navbar />
       <div className="container mx-auto p-4">
-      <div className="text-center text-2xl font-bold">Wishlist</div>
+        <div className="text-center text-2xl font-bold">Wishlist</div>
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">
             Total Price: ₹{totalPrice.toFixed(2)}

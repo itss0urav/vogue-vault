@@ -2,8 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Context from "../context/Context";
 const BuyPage = ({ product }) => {
+  const { setCart, cartText, setCartText } = useContext(Context);
+  
   const [quantity, setQuantity] = useState(1);
-  const [boughtUsers, setBoughtUsers] = useState(0);
+  const [boughtUsers, setBoughtUsers] = useState(0); // for storing random value of users that bought a product
   const [selectedSize, setSelectedSize] = useState(""); // Initialize with an empty string
 
   useEffect(() => {
@@ -13,7 +15,6 @@ const BuyPage = ({ product }) => {
   }, []);
 
   const nav = useNavigate();
-  const { setCart, cartText, setCartText } = useContext(Context);
 
   const handleQuantityChange = (event) => {
     setQuantity(parseInt(event.target.value, 10));

@@ -12,8 +12,10 @@ const Admin = () => {
     addProduct,
     // database,
   } = useContext(Context);
+
   const [alertMessage, setAlertMessage] = useState("");
-  console.log(bannedUsers);
+  // console.log(bannedUsers);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) {
@@ -39,6 +41,7 @@ const Admin = () => {
   };
 
   const handleAddProduct = () => {
+    
     // Validate new product data here if necessary
     setAlertMessage("Product Added");
     // Call addProduct function from context to add the new product

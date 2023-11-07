@@ -14,21 +14,25 @@ const Body = () => {
     wishlistText,
     setWishlistText,
   } = useContext(Context);
+
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   // const filtered = new Set(database.map((data) => data.category));
   // const filteredArray = [...filtered];
 
+
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
 
+  // add to cart
   const addToCart = (event, product) => {
     event.stopPropagation();
     setCart((currentCart) => [...currentCart, product]);
     setCartText({ ...cartText, [product.id]: "Added to Cart" });
   };
 
+  // add to wishlist
   const addToWishlist = (event, product) => {
     event.stopPropagation();
     setWishlist((currentWishlist) => [...currentWishlist, product]);
