@@ -87,7 +87,7 @@ function App() {
             <Route path="/help" element={<Help />} />
             <Route path="/" element={<Home />} />
             {/* components */}
-            
+
             <Route path="/UserProfile" element={<UserProfile />} />
             <Route path="/Wishlist" element={<Wishlist />} />
             <Route path="/Cart" element={<Cart />} />
