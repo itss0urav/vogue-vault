@@ -1,22 +1,32 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import BuyPageFromFiltered from "./pages/BuyPageFromFiltered";
-import CategoryProducts from "./components/CategoryProducts";
-import PaymentSuccess from "./pages/PaymentSuccess";
-import UserProfile from "./components/UserProfile";
-import { mensProducts } from "./data/MyData";
-import Wishlist from "./components/Wishlist";
+import { useState } from "react";
+
+//context
 import UserContext from "./context/Context";
+
+//data
+import { mensProducts } from "./data/MyData";
+
+// pages
+import BuyPageFromFiltered from "./pages/BuyPageFromFiltered";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import AdminLogin from "./pages/AdminLogin";
 import Services from "./pages/Services";
 import Payment from "./pages/Payment";
-import Cart from "./components/Cart";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import Terms from "./pages/Terms";
-import { useState } from "react";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
+
+//  components
+import CategoryProducts from "./components/CategoryProducts";
+import UserProfile from "./components/UserProfile";
+import Wishlist from "./components/Wishlist";
+import Cart from "./components/Cart";
+
+//css
 import "./App.css";
 
 function App() {
