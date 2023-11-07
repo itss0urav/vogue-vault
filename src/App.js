@@ -73,11 +73,11 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={dataExpanded}>
           <Routes>
+            {/* pages */}
+
             <Route path="/buy/:productId" element={<BuyPageFromFiltered />} />
             <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
-            <Route path="/UserProfile" element={<UserProfile />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/Wishlist" element={<Wishlist />} />
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/adminhome" element={<Admin />} />
             <Route path="/Payment" element={<Payment />} />
@@ -85,8 +85,12 @@ function App() {
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/help" element={<Help />} />
-            <Route path="/Cart" element={<Cart />} />
             <Route path="/" element={<Home />} />
+            {/* components */}
+            
+            <Route path="/UserProfile" element={<UserProfile />} />
+            <Route path="/Wishlist" element={<Wishlist />} />
+            <Route path="/Cart" element={<Cart />} />
 
             {/* products filtered page */}
             {filteredArray.map((product) => (
