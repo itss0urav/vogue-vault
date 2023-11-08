@@ -136,7 +136,7 @@ const Admin = () => {
                     {bannedUsers.includes(user.userEmail) ? "Banned" : "Active"}
                   </td>
                   <td className="border text-center border-gray-300 px-4 py-2">
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 justify-center">
                       {bannedUsers.includes(user.userEmail) ? (
                         <button
                           className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
