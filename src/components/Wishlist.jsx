@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import Carousel from "../components/Carousel";
 import React, { useContext } from "react";
 import Context from "../context/Context";
 import Navbar from "./Navbar";
-import Carousel from "../components/Carousel";
 
 const Wishlist = () => {
   const { wishlist, setWishlist } = useContext(Context);
