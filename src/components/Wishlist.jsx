@@ -72,7 +72,7 @@ const Wishlist = () => {
                   />
                   <h3 className="text-lg font-semibold mb-2">{data.name}</h3>
                   <div className="text-gray-700">
-                    <p className="mb-1">${data.price}</p>
+                    <p className="mb-1">₹{data.price}</p>
                     <p className="mb-1">{data.description}</p>
                   </div>
                   <div className="mb-4 flex items-center">
