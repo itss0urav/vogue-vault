@@ -19,6 +19,7 @@ import Admin from "./pages/Admin";
 import Terms from "./pages/Terms";
 import Home from "./pages/Home";
 import Help from "./pages/Help";
+import Test from "./pages/Test";
 
 //  components
 import CategoryProducts from "./components/CategoryProducts";
@@ -45,8 +46,9 @@ function App() {
   const addProduct = (newProduct) => {
     setDatabase([...database, newProduct]);
   };
-  console.log("the cart products", cart);
-  console.log("the wishlist products", wishlist);
+  
+  // console.log("the cart products", cart);
+  // console.log("the wishlist products", wishlist);
   const dataExpanded = {
     addProduct,
     username,
@@ -95,6 +97,7 @@ function App() {
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/Test" element={<Test />} />
             <Route path="/" element={<Home />} />
             {/* components */}
 
