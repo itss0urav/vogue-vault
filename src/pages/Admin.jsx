@@ -41,7 +41,6 @@ const Admin = () => {
   };
 
   const handleAddProduct = () => {
-    
     // Validate new product data here if necessary
     setAlertMessage("Product Added");
     // Call addProduct function from context to add the new product
@@ -67,6 +66,39 @@ const Admin = () => {
 
   const handleUnban = (userEmail) => {
     setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
+  };
+
+  //updates
+
+  const [passwordChangeUser, setPasswordChangeUser] = useState(null);
+  // const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  // This function will be called when the 'Change Password' button is clicked
+  const handleChangePasswordClick = (userEmail) => {
+    setPasswordChangeUser(userEmail);
+  };
+
+  // This function will be called when the 'Submit' button in the password change form is clicked
+  const handleChangePasswordSubmit = () => {
+    // Find the user in your 'allUsers' array
+    const user = allUsers.find((user) => user.userEmail === passwordChangeUser);
+
+    // Validate the current password
+    // if (user.userPassword !== currentPassword) {
+    //   alert("Current password is incorrect");
+    //   return;
+    // }
+
+    // Validate the new password here if necessary
+
+    // Then update the user's password in your database
+    user.userPassword = newPassword;
+
+    // Finally, clear the form and close it
+    setPasswordChangeUser(null);
+    // setCurrentPassword("");
+    setNewPassword("");
   };
 
   return (
@@ -106,26 +138,59 @@ const Admin = () => {
                     {bannedUsers.includes(user.userEmail) ? "Banned" : "Active"}
                   </td>
                   <td className="border text-center border-gray-300 px-4 py-2">
-                    {bannedUsers.includes(user.userEmail) ? (
+                    <div className="flex gap-2">
+                      {bannedUsers.includes(user.userEmail) ? (
+                        <button
+                          className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
+                          onClick={() => handleUnban(user.userEmail)}
+                        >
+                          Unban
+                        </button>
+                      ) : (
+                        <button
+                          className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
+                          onClick={() => handleBan(user.userEmail)}
+                        >
+                          Ban
+                        </button>
+                      )}
                       <button
                         className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
-                        onClick={() => handleUnban(user.userEmail)}
+                        onClick={() =>
+                          handleChangePasswordClick(user.userEmail)
+                        }
                       >
-                        Unban
+                        Change Password
                       </button>
-                    ) : (
-                      <button
-                        className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
-                        onClick={() => handleBan(user.userEmail)}
-                      >
-                        Ban
-                      </button>
-                    )}
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          <div className="bg-gray-400 p-2 mt-10">
+            {/* Add a form for changing the password that is displayed when a
+            user is selected */}
+            {passwordChangeUser && (
+              <form>
+                {/* <input
+                  type="password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  placeholder="Current password"
+                /> */}
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="New password"
+                />
+                <button type="button" onClick={handleChangePasswordSubmit}>
+                  Submit
+                </button>
+              </form>
+            )}
+          </div>
         </div>
         <h2 className="mt-12 border bg-gray-600 text-white text-center text-2xl font-bold  mb-4">
           Add New Product
