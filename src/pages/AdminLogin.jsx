@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
 const AdminLogin = () => {
-  
   // admin login temp states
 
   const [username, setUsername] = useState("");

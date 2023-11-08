@@ -41,12 +41,11 @@ const Admin = () => {
   };
 
   const handleAddProduct = () => {
-    // Validate new product data here if necessary
     setAlertMessage("Product Added");
-    // Call addProduct function from context to add the new product
+
     addProduct(newProduct);
 
-    // Clear the form after adding the product
+    // to Clear the form after adding the product
     setNewProduct({
       id: "",
       name: "",
@@ -74,38 +73,37 @@ const Admin = () => {
   // const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
-  // This function will be called when the 'Change Password' button is clicked
+  // to go to change password mode
+
   const handleChangePasswordClick = (userEmail) => {
     setPasswordChangeUser(userEmail);
   };
 
-  // This function will be called when the 'Submit' button in the password change form is clicked
+  // to handle new password submission
+
   const handleChangePasswordSubmit = () => {
-    // Find the user in your 'allUsers' array
     const user = allUsers.find((user) => user.userEmail === passwordChangeUser);
 
     // Validate the current password
+
     // if (user.userPassword !== currentPassword) {
     //   alert("Current password is incorrect");
     //   return;
     // }
 
-    // Validate the new password here if necessary
-
-    // Then update the user's password in your database
     user.userPassword = newPassword;
 
-    // Finally, clear the form and close it
+    // to clear the form and close it
     setPasswordChangeUser(null);
     // setCurrentPassword("");
     setNewPassword("");
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
       <div className="container mx-auto mt-8 p-4">
-        <h2 className=" border bg-gray-600 text-white text-center text-2xl font-bold  mb-8">
+        <h2 className="bg-gray-600 text-white text-center text-2xl font-bold mb-8 p-2">
           All Users
         </h2>
         <div className="flex flex-col items-center">
@@ -168,36 +166,36 @@ const Admin = () => {
               ))}
             </tbody>
           </table>
-          <div className="bg-gray-400 p-2 mt-10">
-            {/* Add a form for changing the password that is displayed when a
-            user is selected */}
+          <div className="bg-gray-400 rounded-sm mt-10">
             {passwordChangeUser && (
-              <form>
-                {/* <input
-                  type="password"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                  placeholder="Current password"
-                /> */}
+              <form className="flex flex-col items-center p-2 rounded-sm">
                 <input
                   type="password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="New password"
+                  className="mb-2 p-2 border rounded"
                 />
-                <button type="button" onClick={handleChangePasswordSubmit}>
+                <button
+                  type="button"
+                  onClick={handleChangePasswordSubmit}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
                   Submit
                 </button>
               </form>
             )}
           </div>
         </div>
-        <h2 className="mt-12 border bg-gray-600 text-white text-center text-2xl font-bold  mb-4">
+        <h2 className="mt-12 bg-gray-600 text-white text-center text-2xl font-bold mb-4 p-2">
           Add New Product
         </h2>
+        <div className="text-center m-4 text-2xl text-cyan-600 font-bold">
+          {" "}
+          {alertMessage}
+        </div>
         <div className="max-w-md mx-auto">
-          <div className="text-center text-blue-500">{alertMessage}</div>
-          <form>
+          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Product Name
