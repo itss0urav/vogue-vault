@@ -9,21 +9,17 @@ const Admin = () => {
     allUsers,
     bannedUsers,
     setBannedUsers,
-    addProduct,
-    // database,
+    database,
+    setDatabase,
   } = useContext(Context);
 
   const [alertMessage, setAlertMessage] = useState("");
-  // console.log(bannedUsers);
-
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/login");
     }
   }, [isLoggedIn, navigate]);
-
-  // add product
 
   const [newProduct, setNewProduct] = useState({
     id: "",
@@ -35,17 +31,31 @@ const Admin = () => {
     description: "",
   });
 
+  const [editProduct, setEditProduct] = useState(null);
+
+  useEffect(() => {
+    if (editProduct) {
+      setNewProduct(editProduct);
+    }
+  }, [editProduct]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
   const handleAddProduct = () => {
-    setAlertMessage("Product Added");
+    if (editProduct) {
+      const updatedProducts = database.map((product) =>
+        product.id === editProduct.id ? newProduct : product
+      );
+      setDatabase(updatedProducts);
+      setAlertMessage("Product Updated");
+    } else {
+      setDatabase([...database, newProduct]);
+      setAlertMessage("Product Added");
+    }
 
-    addProduct(newProduct);
-
-    // to Clear the form after adding the product
     setNewProduct({
       id: "",
       name: "",
@@ -55,9 +65,8 @@ const Admin = () => {
       quantity: 1,
       description: "",
     });
+    setEditProduct(null);
   };
-
-  // user management
 
   const handleBan = (userEmail) => {
     setBannedUsers([...bannedUsers, userEmail]);
@@ -67,36 +76,29 @@ const Admin = () => {
     setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
   };
 
-  //updates
-
   const [passwordChangeUser, setPasswordChangeUser] = useState(null);
-  // const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-
-  // to go to change password mode
 
   const handleChangePasswordClick = (userEmail) => {
     setPasswordChangeUser(userEmail);
   };
 
-  // to handle new password submission
-
   const handleChangePasswordSubmit = () => {
     const user = allUsers.find((user) => user.userEmail === passwordChangeUser);
-
-    // Validate the current password
-
-    // if (user.userPassword !== currentPassword) {
-    //   alert("Current password is incorrect");
-    //   return;
-    // }
-
     user.userPassword = newPassword;
-
-    // to clear the form and close it
     setPasswordChangeUser(null);
-    // setCurrentPassword("");
     setNewPassword("");
+  };
+
+  const handleEditClick = (product) => {
+    setEditProduct(product);
+  };
+
+  const handleDeleteProduct = (productId) => {
+    const updatedProducts = database.filter(
+      (product) => product.id !== productId
+    );
+    setDatabase(updatedProducts);
   };
 
   return (
@@ -188,6 +190,59 @@ const Admin = () => {
           </div>
         </div>
         <h2 className="mt-12 bg-gray-600 text-white text-center text-2xl font-bold mb-4 p-2">
+          All Products
+        </h2>
+        <div className="flex flex-col items-center">
+          <table className="min-w-full bg-white border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="border border-gray-300 px-4 py-2">Name</th>
+                <th className="border border-gray-300 px-4 py-2">Category</th>
+                <th className="border border-gray-300 px-4 py-2">Price</th>
+                <th className="border border-gray-300 px-4 py-2">Quantity</th>
+                <th className="border border-gray-300 px-4 py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {database.map((product, index) => (
+                <tr
+                  key={index}
+                  className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
+                >
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    {product.name}
+                  </td>
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    {product.category}
+                  </td>
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    {product.price}
+                  </td>
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    {product.quantity}
+                  </td>
+                  <td className="border text-center border-gray-300 px-4 py-2">
+                    <div className="flex gap-2 justify-center">
+                      <button
+                        className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
+                        onClick={() => handleEditClick(product)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
+                        onClick={() => handleDeleteProduct(product.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <h2 className="mt-12 bg-gray-600 text-white text-center text-2xl font-bold mb-4 p-2">
           Add New Product
         </h2>
         <div className="text-center m-4 text-2xl text-cyan-600 font-bold">
@@ -195,7 +250,7 @@ const Admin = () => {
           {alertMessage}
         </div>
         <div className="max-w-md mx-auto">
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <form className="bg-white shadow-md rounded px-8 pt-6           pb-8 mb-4">
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Product Name
@@ -279,7 +334,7 @@ const Admin = () => {
                 onClick={handleAddProduct}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
-                Add Product
+                {editProduct ? "Update Product" : "Add Product"}
               </button>
             </div>
           </form>
