@@ -114,7 +114,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   to="/UserProfile"
-                  className="mb-1 md:hidden flex items-center text-cyan-300 text-lg font-medium"
+                  className="mb-1 md:hidden flex items-center text-cyan-300 hover:text-red-500 text-lg font-medium"
                 >
                   <BiUserCircle className="text-2xl mt-0.5" />
                   {updatedName}

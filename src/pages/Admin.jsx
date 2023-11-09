@@ -1,9 +1,11 @@
+// Import necessary libraries and components
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Context from "../context/Context";
 
 const Admin = () => {
+  // Extract necessary values and functions from context
   const {
     isLoggedIn,
     allUsers,
@@ -13,14 +15,20 @@ const Admin = () => {
     setDatabase,
   } = useContext(Context);
 
+  // State for alert message
   const [alertMessage, setAlertMessage] = useState("");
+
+  // Use navigate for routing
   const navigate = useNavigate();
+
+  // Check if user is logged in, if not navigate to login
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/login");
     }
   }, [isLoggedIn, navigate]);
 
+  // State for new product form
   const [newProduct, setNewProduct] = useState({
     id: "",
     name: "",
@@ -31,31 +39,38 @@ const Admin = () => {
     description: "",
   });
 
+  // State for product being edited
   const [editProduct, setEditProduct] = useState(null);
 
+  // If editProduct changes, set newProduct to editProduct
   useEffect(() => {
     if (editProduct) {
       setNewProduct(editProduct);
     }
   }, [editProduct]);
 
+  // Handle input change for new product form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
+  // Handle add product form submission
   const handleAddProduct = () => {
     if (editProduct) {
+      // If editing, map through products and replace the one being edited
       const updatedProducts = database.map((product) =>
         product.id === editProduct.id ? newProduct : product
       );
       setDatabase(updatedProducts);
       setAlertMessage("Product Updated");
     } else {
+      // If not editing, add new product to database
       setDatabase([...database, newProduct]);
       setAlertMessage("Product Added");
     }
 
+    // Reset newProduct and editProduct
     setNewProduct({
       id: "",
       name: "",
@@ -68,21 +83,26 @@ const Admin = () => {
     setEditProduct(null);
   };
 
+  // Handle ban user
   const handleBan = (userEmail) => {
     setBannedUsers([...bannedUsers, userEmail]);
   };
 
+  // Handle unban user
   const handleUnban = (userEmail) => {
     setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
   };
 
+  // State for password change
   const [passwordChangeUser, setPasswordChangeUser] = useState(null);
   const [newPassword, setNewPassword] = useState("");
 
+  // Handle change password click
   const handleChangePasswordClick = (userEmail) => {
     setPasswordChangeUser(userEmail);
   };
 
+  // Handle change password submit
   const handleChangePasswordSubmit = () => {
     const user = allUsers.find((user) => user.userEmail === passwordChangeUser);
     user.userPassword = newPassword;
@@ -90,10 +110,12 @@ const Admin = () => {
     setNewPassword("");
   };
 
+  // Handle edit product click
   const handleEditClick = (product) => {
     setEditProduct(product);
   };
 
+  // Handle delete product
   const handleDeleteProduct = (productId) => {
     const updatedProducts = database.filter(
       (product) => product.id !== productId
@@ -246,7 +268,6 @@ const Admin = () => {
           Add New Product
         </h2>
         <div className="text-center m-4 text-2xl text-cyan-600 font-bold">
-          {" "}
           {alertMessage}
         </div>
         <div className="max-w-md mx-auto">

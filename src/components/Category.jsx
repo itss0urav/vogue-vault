@@ -6,7 +6,7 @@ const Category = () => {
   const { database } = useContext(Context);
 
   // filtering category
-  
+
   const filtered = new Set(database.map((data) => data.category));
   const filteredArray = [...filtered];
 
@@ -15,6 +15,7 @@ const Category = () => {
       <div className="text-sm flex justify-center md:gap-3 md:text-xl text-white bg-gray-700  p-1 mb-4">
         {filteredArray.map((data, index) => (
           <Link
+            key={index}
             to={`/${data}`}
             className="px-2 py-1 rounded-md hover:bg-gray-800 transition duration-500 ease-in-out transform  hover:scale-105 no-underline text-white "
           >
