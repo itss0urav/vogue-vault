@@ -1,11 +1,9 @@
-// Import necessary libraries and components
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Context from "../context/Context";
 
 const Admin = () => {
-  // Extract necessary values and functions from context
   const {
     isLoggedIn,
     allUsers,
@@ -15,20 +13,15 @@ const Admin = () => {
     setDatabase,
   } = useContext(Context);
 
-  // State for alert message
   const [alertMessage, setAlertMessage] = useState("");
-
-  // Use navigate for routing
   const navigate = useNavigate();
 
-  // Check if user is logged in, if not navigate to login
   useEffect(() => {
     if (!isLoggedIn) {
       navigate("/login");
     }
   }, [isLoggedIn, navigate]);
 
-  // State for new product form
   const [newProduct, setNewProduct] = useState({
     id: "",
     name: "",
@@ -39,38 +32,30 @@ const Admin = () => {
     description: "",
   });
 
-  // State for product being edited
   const [editProduct, setEditProduct] = useState(null);
 
-  // If editProduct changes, set newProduct to editProduct
   useEffect(() => {
     if (editProduct) {
       setNewProduct(editProduct);
     }
   }, [editProduct]);
 
-  // Handle input change for new product form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
   };
 
-  // Handle add product form submission
   const handleAddProduct = () => {
     if (editProduct) {
-      // If editing, map through products and replace the one being edited
       const updatedProducts = database.map((product) =>
         product.id === editProduct.id ? newProduct : product
       );
       setDatabase(updatedProducts);
       setAlertMessage("Product Updated");
     } else {
-      // If not editing, add new product to database
       setDatabase([...database, newProduct]);
       setAlertMessage("Product Added");
     }
-
-    // Reset newProduct and editProduct
     setNewProduct({
       id: "",
       name: "",
@@ -83,26 +68,21 @@ const Admin = () => {
     setEditProduct(null);
   };
 
-  // Handle ban user
   const handleBan = (userEmail) => {
     setBannedUsers([...bannedUsers, userEmail]);
   };
 
-  // Handle unban user
   const handleUnban = (userEmail) => {
     setBannedUsers(bannedUsers.filter((email) => email !== userEmail));
   };
 
-  // State for password change
   const [passwordChangeUser, setPasswordChangeUser] = useState(null);
   const [newPassword, setNewPassword] = useState("");
 
-  // Handle change password click
   const handleChangePasswordClick = (userEmail) => {
     setPasswordChangeUser(userEmail);
   };
 
-  // Handle change password submit
   const handleChangePasswordSubmit = () => {
     const user = allUsers.find((user) => user.userEmail === passwordChangeUser);
     user.userPassword = newPassword;
@@ -110,12 +90,10 @@ const Admin = () => {
     setNewPassword("");
   };
 
-  // Handle edit product click
   const handleEditClick = (product) => {
     setEditProduct(product);
   };
 
-  // Handle delete product
   const handleDeleteProduct = (productId) => {
     const updatedProducts = database.filter(
       (product) => product.id !== productId
@@ -127,18 +105,18 @@ const Admin = () => {
     <div className="min-h-screen bg-gray-100">
       <Navbar />
       <div className="container mx-auto mt-8 p-4">
-        <h2 className="bg-gray-600 text-white text-center text-2xl font-bold mb-8 p-2">
+        <h2 className="bg-gray-600 text-white text-center text-2xl font-bold mb-8 p-2 w-full sm:w-3/4 mx-auto">
           All Users
         </h2>
-        <div className="flex flex-col items-center">
+        <div className="overflow-x-auto w-full sm:w-3/4 mx-auto">
           <table className="min-w-full bg-white border-collapse border border-gray-300">
             <thead>
               <tr className="bg-gray-200">
-                <th className="border border-gray-300 px-4 py-2">Username</th>
-                <th className="border border-gray-300 px-4 py-2">Email</th>
-                <th className="border border-gray-300 px-4 py-2">Password</th>
-                <th className="border border-gray-300 px-4 py-2">Status</th>
-                <th className="border border-gray-300 px-4 py-2">Actions</th>
+                <th className="border px-4 py-2 sm:w-1/6">Username</th>
+                <th className="border px-4 py-2 sm:w-1/6">Email</th>
+                <th className="border px-4 py-2 sm:w-1/6">Password</th>
+                <th className="border px-4 py-2 sm:w-1/6">Status</th>
+                <th className="border px-4 py-2 sm:w-1/3">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -147,19 +125,13 @@ const Admin = () => {
                   key={index}
                   className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
                 >
-                  <td className="border text-center border-gray-300 px-4 py-2">
-                    {user.userName}
-                  </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
-                    {user.userEmail}
-                  </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
-                    {user.userPassword}
-                  </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
+                  <td className="border px-4 py-2">{user.userName}</td>
+                  <td className="border px-4 py-2">{user.userEmail}</td>
+                  <td className="border px-4 py-2">{user.userPassword}</td>
+                  <td className="border px-4 py-2">
                     {bannedUsers.includes(user.userEmail) ? "Banned" : "Active"}
                   </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
+                  <td className="border px-4 py-2">
                     <div className="flex gap-2 justify-center">
                       {bannedUsers.includes(user.userEmail) ? (
                         <button
@@ -214,15 +186,15 @@ const Admin = () => {
         <h2 className="mt-12 bg-gray-600 text-white text-center text-2xl font-bold mb-4 p-2">
           All Products
         </h2>
-        <div className="flex flex-col items-center">
+        <div className="overflow-x-auto w-full sm:w-3/4 mx-auto">
           <table className="min-w-full bg-white border-collapse border border-gray-300">
             <thead>
               <tr className="bg-gray-200">
-                <th className="border border-gray-300 px-4 py-2">Name</th>
-                <th className="border border-gray-300 px-4 py-2">Category</th>
-                <th className="border border-gray-300 px-4 py-2">Price</th>
-                <th className="border border-gray-300 px-4 py-2">Quantity</th>
-                <th className="border border-gray-300 px-4 py-2">Actions</th>
+                <th className="border px-4 py-2 sm:w-1/5">Name</th>
+                <th className="border px-4 py-2 sm:w-1/5">Category</th>
+                <th className="border px-4 py-2 sm:w-1/5">Price</th>
+                <th className="border px-4 py-2 sm:w-1/5">Quantity</th>
+                <th className="border px-4 py-2 sm:w-1/5">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -231,19 +203,11 @@ const Admin = () => {
                   key={index}
                   className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
                 >
-                  <td className="border text-center border-gray-300 px-4 py-2">
-                    {product.name}
-                  </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
-                    {product.category}
-                  </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
-                    {product.price}
-                  </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
-                    {product.quantity}
-                  </td>
-                  <td className="border text-center border-gray-300 px-4 py-2">
+                  <td className="border px-4 py-2">{product.name}</td>
+                  <td className="border px-4 py-2">{product.category}</td>
+                  <td className="border px-4 py-2">{product.price}</td>
+                  <td className="border px-4 py-2">{product.quantity}</td>
+                  <td className="border px-4 py-2">
                     <div className="flex gap-2 justify-center">
                       <button
                         className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
@@ -271,8 +235,19 @@ const Admin = () => {
           {alertMessage}
         </div>
         <div className="max-w-md mx-auto">
-          <form className="bg-white shadow-md rounded px-8 pt-6           pb-8 mb-4">
+          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Product ID
+              </label>
+              <input
+                type="text"
+                name="id"
+                value={newProduct.id}
+                onChange={handleInputChange}
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter product ID"
+              />
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Product Name
               </label>
