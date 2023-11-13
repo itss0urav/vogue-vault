@@ -12,7 +12,7 @@ const Category = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="sm:w-full md:w-full lg:w-3/4  text-sm flex justify-center md:gap-3 md:text-xl text-white bg-black  p-1 mb-4">
+      <div className="w-full lg:w-3/4  text-sm flex justify-center md:gap-3 md:text-xl text-white bg-black  p-1 mb-4">
         {filteredArray.map((data, index) => (
           <Link
             key={index}
