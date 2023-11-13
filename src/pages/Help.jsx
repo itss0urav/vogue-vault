@@ -16,7 +16,7 @@ const Help = () => {
             hesitate to contact us.
           </p>
           <p className="mt-2 text-center text-sm text-gray-600">
-            Email us at:{" "}
+            Email us at:
             <a
               href="mailto:souravhacks987@gmail.com"
               className="font-medium text-indigo-600 hover:text-indigo-500"

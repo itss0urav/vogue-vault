@@ -120,13 +120,13 @@ const Admin = () => {
       <div className="container mx-auto mt-8 p-4">
         <div className="flex justify-center gap-2 m-2">
           <button
-            className="bg-green-600 text-white rounded-full py-2 px-4 hover:bg-green-800 focus:outline-none focus:ring focus:border-gray-700"
+            className="bg-green-600 text-white rounded-md py-2 px-4 hover:bg-green-800 focus:outline-none focus:ring focus:border-gray-700"
             onClick={handleUserManagement}
           >
             User Management
           </button>
           <button
-            className="bg-blue-600  text-white rounded-full py-2 px-4 ml-2 hover:bg-blue-800 focus:outline-none focus:ring focus:border-gray-700"
+            className="bg-blue-600  text-white rounded-md py-2 px-4 ml-2 hover:bg-blue-800 focus:outline-none focus:ring focus:border-gray-700"
             onClick={handleAdminManagement}
           >
             Product Management
