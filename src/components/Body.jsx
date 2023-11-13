@@ -76,7 +76,10 @@ const Body = () => {
                         ₹{randomPrice}
                       </p>
 
-                      <p className="mb-1">{product.description}</p>
+                      <p className="mb-1">
+                        {product.description.match(/[^.!?]+[.!?]/)[0].trim()}
+                        {/* {product.description} */}
+                      </p>
                     </div>
                   </div>
                   <div className="flex gap-2 mt-2">
