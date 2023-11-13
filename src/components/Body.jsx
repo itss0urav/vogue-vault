@@ -75,7 +75,6 @@ const Body = () => {
                       <p className="mb-1 text-xl text-red-700 line-through">
                         ₹{randomPrice}
                       </p>
-
                       <p className="mb-1">
                         {product.description.match(/[^.!?]+[.!?]/)[0].trim()}
                         {/* {product.description} */}
