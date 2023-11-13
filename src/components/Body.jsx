@@ -20,7 +20,6 @@ const Body = () => {
   // const filtered = new Set(database.map((data) => data.category));
   // const filteredArray = [...filtered];
 
-
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
@@ -41,9 +40,8 @@ const Body = () => {
 
   return (
     <div className=" ">
-        <Category />
-      <div className="mx-auto p-4">
-
+      <Category />
+      <div className="mx-auto p-4 md:w-3/4">
         {selectedProduct ? (
           <BuyPage product={selectedProduct} />
         ) : (
