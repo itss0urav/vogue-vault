@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Context from "../context/Context";
@@ -12,7 +12,7 @@ const Admin = () => {
     database,
     setDatabase,
   } = useContext(Context);
-
+  const editSectionRef = useRef(null);
   //states for admin options
 
   const [allUserBtn, setAllUserBtn] = useState(false);
@@ -105,6 +105,10 @@ const Admin = () => {
 
   const handleEditClick = (product) => {
     setEditProduct(product);
+
+    if (editSectionRef.current) {
+      editSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const handleDeleteProduct = (productId) => {
@@ -248,6 +252,7 @@ const Admin = () => {
                       <td className="border px-4 py-2">
                         <div className="flex gap-2 justify-center">
                           <button
+                            href="#editsection"
                             className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-200"
                             onClick={() => handleEditClick(product)}
                           >
@@ -266,9 +271,13 @@ const Admin = () => {
                 </tbody>
               </table>
             </div>
-            <h2 className="mt-12 bg-gray-600 text-white text-center text-2xl font-bold mb-4 p-2">
+            <h2
+              ref={editSectionRef}
+              className="mt-12 bg-gray-600 text-white text-center text-2xl font-bold mb-4 p-2"
+            >
               Add New Product
             </h2>
+
             <div className="text-center m-4 text-2xl text-cyan-600 font-bold">
               {alertMessage}
             </div>
